@@ -1,0 +1,2 @@
+Today I learned about the <nav> element, creating internal page links, and using special href values.
+I practiced linking to different sections of a page, and learned how href="tel:" can open a phone call and href="mailto:" can open an email window automatically.

@@ -1,9 +1,9 @@
-📊 HTML Tables – Practice Project
+HTML Tables – Practice Project
 
 This project is a simple exercise focused on learning how to structure and display data using HTML tables.
 It includes a sample table showing Calculus Final Exam Grades.
 
-🔥 What I Learned
+What I Learned:
 
 - How to create a table using the "table" element
 

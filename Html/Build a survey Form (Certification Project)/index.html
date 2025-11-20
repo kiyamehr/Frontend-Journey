@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Survey Form</title>
+  </head>
+
+  <body>
+    <h1 id="title">freeCodeCamp Survey Form</h1>
+    <p id="description">
+      Thank you for taking the time to help us improve the platform
+    </p>
+
+    <form id="survey-form">
+      <label for="name" id="name-label"> Name </label>
+      <input
+        type="text"
+        id="name"
+        name="text"
+        required
+        placeholder="Your Name"
+      />
+
+      <label for="email" id="email-label"> Email </label>
+      <input
+        type="email"
+        id="email"
+        name="email"
+        required
+        placeholder="Your Email"
+      />
+
+      <label for="number" id="number-label"> Age </label>
+      <input
+        type="number"
+        id="number"
+        name="number"
+        min="1"
+        max="120"
+        placeholder="Your Age"
+      />
+
+      <p>Which option best describes your current role?</p>
+      <select id="dropdown">
+        <option value="student">Student</option>
+        <option value="full-Time-Job<">Full Time Job</option>
+        <option value="full-Time-Learner">Full Time Learner</option>
+        <option value="other">Other</option>
+      </select>
+
+      <p>Would you recommend freeCodeCamp to a friend?</p>
+
+      <input
+        type="radio"
+        name="rating"
+        id="definitely"
+        value="definitely"
+        checked
+      />
+      <label for="definitely"> Definitely </label>
+
+      <input type="radio" name="rating" id="maybe" value="maybe" />
+      <label for="maybe"> Maybe </label>
+
+      <input type="radio" name="rating" id="not-sure" value="not-sure" />
+      <label for="not-sure"> Not sure </label>
+
+      <p>What is your favorite feature of freeCodeCamp?</p>
+      <select id="favorite-thing">
+        <option value="challenges">Challenges</option>
+        <option value="Projects">Projects</option>
+        <option value="community">Community</option>
+      </select>
+
+      <p>What would you like to see improved? (Check all that apply)</p>
+      <input
+        type="checkbox"
+        value="backend-projects"
+        id="backend-projects"
+        name="backend-projects"
+        value="backend-projects"
+      />
+      <label for="backend-projects">Back-end Projects</label>
+
+      <input
+        type="checkbox"
+        value="fontend-projects"
+        id="fontend-projects"
+        name="fontend-projects"
+        value="fontend-projects"
+      />
+      <label for="fontend-projects">Front-end Projects</label>
+
+      <input
+        type="checkbox"
+        value="challenges"
+        id="challenges"
+        name="challenges"
+        value=""
+      />
+      <label for="challenges"> Challenges</label>
+
+      <p>Any comments or suggestions?</p>
+
+      <textarea height="10" cols="10"></textarea>
+
+      <br />
+
+      <button type="submit" id="submit">Submit</button>
+    </form>
+  </body>
+</html>

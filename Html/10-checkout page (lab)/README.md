@@ -1,0 +1,1 @@
+One of the lab exercises in freecodecamp involved creating a checkout page and using ARIA in some parts.

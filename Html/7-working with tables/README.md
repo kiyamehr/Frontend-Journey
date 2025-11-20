@@ -4,11 +4,11 @@ This project is a simple exercise where I learned how to build and structure tab
 
 What I practiced:
 
-- Creating a <table> with proper structure
+- Creating a "table" with proper structure
 
-- Using <thead>, <tbody>, and <tfoot>
+- Using "thead", "tbody", and "tfoot"
 
-- Adding rows and cells with <tr>, <th>, and <td>
+- Adding rows and cells with "tr", "th", and "td"
 
 - Using <caption> for accessibility
 

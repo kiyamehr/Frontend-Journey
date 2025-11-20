@@ -20,3 +20,17 @@ What I Learned:
 - Adding a table caption for accessibility
 
 - Using "colspan" to merge cells in the footer
+
+_______________
+
+Table Elements:
+
+- Table element: used to create an HTML table.
+- Table Head (thead) element: used to group the header content in an HTML table.
+- Table Row (tr) element: used to create a row in an HTML table.
+- Table Header (th) element: used to create a header cell in an HTML table.
+- Table body (tbody) element: used to group the body content in an HTML table.
+- Table Data Cell (td) element: used to create a data cell in an HTML table.
+- Table Foot (tfoot) element: used to group the footer content in an HTML table.
+- caption element: used to add a title of an HTML table.
+- colspan attribute: used to specify the number of columns a table cell should span.

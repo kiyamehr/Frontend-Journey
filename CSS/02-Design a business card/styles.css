@@ -1,0 +1,65 @@
+html, body {
+    margin: 0;
+    height: 100%;
+}
+
+body {
+    background-color: #0F4D4A;
+    font-family: Arial, Helvetica, sans-serif;
+    border-top: 1px solid transparent;
+    color: #C9C9C9; /* lighter gray for text */
+}
+
+.business-card {
+    background-color: #274039; /* updated card color */
+    border: 10px;
+    text-align: center;
+    width: 300px;
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+
+    font-size: 16px;
+}
+
+.profile-image {
+    width: 100px;
+    height: 100px;
+    max-width: 100%;
+    border-radius: 10px;
+}
+
+p {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+a {
+    text-decoration: none;
+}
+
+.full-name {
+    color: #F4A261; /* warm name color */
+    font-size: 25px;
+}
+
+.designation {
+    color: #A9A9A9; /* muted gray */
+}
+
+.company {
+    color: #C9C9C9; 
+    font-size: 12px;
+}
+
+hr {
+    color: #747273;
+    size: 2px;
+}
+
+a {
+    color: #EE8434; /* warm accent color */
+}

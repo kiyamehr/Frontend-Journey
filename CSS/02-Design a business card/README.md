@@ -6,21 +6,21 @@ The goal was to practice layout, styling, and creating a clean card-style compon
 
 🔧 What I Used
 
-HTML5 for structure
+- HTML5 for structure
 
-CSS3 for layout, colors, and styling
+- CSS3 for layout, colors, and styling
 
-Flexbox (if you used it)
+- Flexbox (if you used it)
 
-Basic typography & spacing
+- Basic typography & spacing
 
 📌 What This Project Shows
 
-How to create a centered card layout
+- How to create a centered card layout
 
-Using CSS to style containers, text, and images
+- Using CSS to style containers, text, and images
 
-Basic design principles (spacing, alignment, clean layout)
+- Basic design principles (spacing, alignment, clean layout)
 
 🎯 Why I Built It
 

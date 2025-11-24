@@ -1,0 +1,18 @@
+:is(button, a.button, input[type='submit'], input[type='reset']) {
+  background-color: darkblue;
+  color: white;
+  border: 1px solid darkblue;
+  padding: 10px 20px;
+  text-decoration: none;
+  border-radius: 5px;
+  cursor: pointer;
+  display: inline-block;
+  margin: 5px;
+  font-size: 16px;
+  text-align: center;
+}
+
+:is(button, a.button, input[type='submit'], input[type='reset']):hover {
+  background-color: blue;
+  border-color: blue;
+}

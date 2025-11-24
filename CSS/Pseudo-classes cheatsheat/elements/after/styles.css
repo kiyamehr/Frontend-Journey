@@ -1,0 +1,20 @@
+.cta-button {
+  background-color: orange;
+  border: none;
+  padding: 10px 30px;
+  cursor: pointer;
+  position: relative;
+}
+
+.cta-button::after {
+  content: "➡️";
+  position: absolute;
+  right: 5px;
+  bottom: 6px;
+  font-size: 1.125rem;
+  transition: transform 0.3s ease;
+}
+
+.cta-button:hover::after {
+  transform: translateX(2px);
+}

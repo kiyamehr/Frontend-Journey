@@ -1,0 +1,6 @@
+/* allows changing color of the dot or number in a li */
+li::marker {
+  color: crimson;
+  font-size: 1.5em;
+  font-weight: bold;
+}

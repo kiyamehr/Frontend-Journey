@@ -1,0 +1,5 @@
+/* Style the user-selected text with a red text color and a yellow background: */
+p::selection {
+    color: red;
+    background: yellow;
+}

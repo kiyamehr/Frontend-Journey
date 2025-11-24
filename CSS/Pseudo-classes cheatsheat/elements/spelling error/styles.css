@@ -1,0 +1,5 @@
+/* Style a text that the browser has flagged as incorrectly spelled: */
+span::spelling-error {
+    text-decoration: underline red;
+    color: red;
+}

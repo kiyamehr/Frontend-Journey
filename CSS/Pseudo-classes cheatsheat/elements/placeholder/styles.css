@@ -1,0 +1,5 @@
+/* makes editing the place holder possible */
+input::placeholder {
+  color: red;
+  opacity: 0.5;
+}

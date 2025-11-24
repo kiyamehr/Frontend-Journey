@@ -1,0 +1,2 @@
+A simple greeting postcard built using HTML and CSS.
+In this project, I practiced styling with pseudo-classes and used a cool trick with the :target selector — when the anchor link is clicked, a hidden section smoothly appears on the page.

@@ -1,0 +1,116 @@
+body {
+    background-color: #1c1c1a;
+    height: 100vh;
+    width: 100vw;
+    overflow-x: hidden;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+h1 {
+    text-align: center;
+}
+
+h1, label {
+    color: #fff6df;
+}
+
+.container {
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    width: 80vw;
+    margin: 100px auto;
+    padding: 40px;
+    border-radius: 8px;
+}
+
+.information-inputs{
+    display: block;
+    margin-bottom: 20px;
+    border-radius: 4px;
+    width: 100%;
+    height: 30px;
+}
+
+.container select {
+    margin-bottom: 20px;
+    width: 100%;
+    height: 35px;
+    display: block;
+    border-radius: 4px;
+}
+
+fieldset {
+    border-radius: 4px;
+}
+
+
+.motivation-text {
+    font-weight: bold;
+}
+
+textarea {
+    width: 100%;
+    height: 80px;
+    border-radius: 4px;
+    margin-top: -10px;
+}
+
+button {
+    width: calc(100% + 5px);
+    display: block;
+    margin-top: 10px;
+    border: none;
+    color: white;
+    font-size: 18px;
+    background-color: #1b5b13;
+    padding: 13px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+button:hover {
+    background-color: rgb(43, 43, 43);
+    cursor: pointer;
+}
+
+
+input {
+    transition: all 0.3s ease;
+}
+
+input, textarea, select {
+    background-color: #2b2a33;
+    color: #efe6d1;
+}
+
+input:focus, textarea:focus {
+    outline: none;
+}
+
+
+input:invalid, select:invalid, textarea:invalid {
+    border: 1px solid #8d1611; 
+
+}
+
+input:valid, select:valid, textarea:valid {
+    border: 1px solid #3ac129; 
+
+}
+
+
+.radio-group input[type="radio"]:checked {
+    border: 1px solid #a6f88a;
+    accent-color: #a6f88a;
+}
+
+.radio-group input[type="radio"]:checked + label {
+    color: #a6f88a;
+}
+
+input[type="text"], input[type="email"], textarea, select {
+    padding-left: 10px;
+    width: calc(100% - 10px);
+}
+
+legend, p {
+    color: #efe6d1;
+}

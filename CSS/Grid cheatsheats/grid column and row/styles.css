@@ -1,0 +1,18 @@
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 4 equal columns */
+  grid-template-rows: repeat(3, 100px); /* 3 equal rows */
+  gap: 10px;
+}
+
+.grid > div {
+  display: grid;
+  place-items: center;
+  background: crimson;
+  color: white;
+  font-size: 4rem;
+}
+
+.item1 {
+  grid-column: 1 / 3;
+}

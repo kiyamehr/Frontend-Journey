@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="sm:scroll-smooth">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="favicon.ico" />
@@ -22,7 +22,9 @@
           <button
             id="mobile-open-button"
             class="text-3xl sm:hidden focus:outline-none"
-          >&#9776; </button>
+          >
+            &#9776;
+          </button>
 
           <nav class="hidden sm:block space-x-6 text-xl" aria-label="main">
             <a href="#rockets" class="hover:opacity-90">Our Rockets</a>
@@ -33,6 +35,97 @@
       </section>
     </header>
 
-    
+    <main class="max-w-4xl mx-auto">
+      <section
+        id="hero"
+        class="flex flex-col-reverse justify-center sm:flex-row items-center p-6 gap-8 mb-12 scroll-mt-40"
+      >
+        <article class="sm:w-1/2">
+          <h2
+            class="max-w-md text-3xl font-bold text-center sm:text-4xl text-slate-900 dark:text-white"
+          >
+            We Boldy go
+            <span class="text-indigo-700 dark:text-indigo-300">
+              Where No Rocket
+            </span>
+            Has Gone Before...
+          </h2>
+
+          <p
+            class="max-w-md text-2xl mt-4 text-center sm:text-left text-slate-700 dark:text-slate-400"
+          >
+            We're building rockets for the next century today. From the moon to
+            Mars, Jupiter and beyind...
+          </p>
+          <p
+            class="max-w-md text-2xl mt-4 text-center sm:text-left text-slate-700 dark:text-slate-400"
+          >
+          Think Acne Rockets.
+        </p>
+        </article>
+        
+        <!-- because of the seciton's flex-col reverse the image 
+        will be at the top -->
+        <img class="w-/5" src="./img/rocketdab.png" alt="Rocket Dab">
+      </section>
+
+      <hr class="mx-auto bg-black dark:bg-white w-1/2">
+
+      <section id="rockets" class="p-6 my-12 scroll-mt-20">
+        <h2 class="text-4xl font-bold text-center sm:text-5xl mb-6 text-slate-900 dark:text-white">
+          Our Rockets
+        </h2>
+
+        <ul class=" list-none mx-auto my-12 flex flex-col justify-stretch sm:flex-row items-center gap-8">
+          <li class=" w-2/3 sm:w-5/6 mt-12 flex flex-col items-center mx-auto border border-solid border-slate-900 dark:border-gray-100 dark:bg-black bg-white py-6 px-2 rounded-3xl shadow-xl">
+            <img class="mb-6 w-1/2" src="./img/rocketman.png" alt="A Man On A Rocket!!!">
+
+            <h3 class="text-3xl text-center text-slate-900 dark:text-white">Explorer</h3>
+
+            <p class=" hidden sm:block text-3xl mt-2 text-center text-slate-500 dark:text-slate-400 ">$</p>
+
+            <p class="sm:hidden text-2xl text-center mt-2 text-slate-500 dark:text-slate-400">Affordable Exploration</p>
+          </li>
+
+          <li class=" w-2/3 sm:w-5/6 mt-7 flex flex-col items-center mx-auto border border-solid border-slate-900 dark:border-gray-100 dark:bg-black bg-white py-6 px-2 rounded-3xl shadow-xl">
+            <img class="mb-6 w-1/2" src="./img/rocketride.png" alt="Adventure">
+
+            <h3 class="text-3xl text-center m-2 text-slate-900 dark:text-white">Adventurer</h3>
+
+            <p class=" hidden sm:block text-3xl mt-2 text-center text-slate-500 dark:text-slate-400 ">$$</p>
+
+            <p class="sm:hidden text-2xl text-center mt-2 text-slate-500 dark:text-slate-400">Best Selling Rocket! </p>
+          </li>
+
+          <li class=" w-2/3 sm:w-5/6 flex mt-7 flex-col items-center mx-auto border border-solid border-slate-900 dark:border-gray-100 dark:bg-black bg-white py-6 px-2 rounded-3xl shadow-xl">
+            <img class="mb-6 w-1/2" src="./img/rocketlaunch.png" alt="Infinity">
+
+            <h3 class="text-3xl text-center text-slate-900 dark:text-white">Infinity And Beyond!!!</h3>
+
+            <p class=" hidden sm:block text-3xl mt-2 text-center text-slate-500 dark:text-slate-400 ">$$$</p>
+
+            <p class="sm:hidden text-2xl text-center mt-2 text-slate-500 dark:text-slate-400">Luxury Starship</p>
+          </li>
+        </ul>
+
+      </section>
+
+      <hr class="mx-auto bg-black dark:bg-white w-1/2">
+
+
+      <section id="testimonials" class="p-6 my-12">
+        <h2 class="text-4xl font-bold text-center sm:text-5xl mb-6 text-slate-900 dark:text-white">
+          Testimonials
+        </h2>
+      </section>
+
+      <hr class="mx-auto bg-black dark:bg-white w-1/2">
+
+      <section id="contact" class="p-6 my-12">
+        <h2 class="text-4xl font-bold text-center sm:text-5xl mb-6 text-slate-900 dark:text-white">
+          Contact Us
+        </h2>
+      </section>
+    </main>
   </body>
 </html>

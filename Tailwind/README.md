@@ -1,4 +1,3 @@
-````markdown
 # Tailwind CSS Crash Course – Dave Gray (3 Hour Course)
 
 ![Tailwind Banner](./assets/banner.png)

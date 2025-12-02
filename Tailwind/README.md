@@ -82,5 +82,3 @@ I’m building a full **frontend journey portfolio**, and this repo helps me sho
 > “Everything in life takes time
 > Spend your time on what truly matters.”
 > — Kiamehr
-
-```

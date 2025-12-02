@@ -1,0 +1,10 @@
+@import "tailwindcss";
+
+
+/* defining custom classes */
+@layer utilities {
+  /* making a custom class that is the value of the classes defined in 'tailwind.config.js' */
+  .section-min-height {
+    min-height: calc(100vh - 68px)
+  }
+}

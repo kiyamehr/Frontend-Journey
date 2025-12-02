@@ -13,6 +13,6 @@ In this lesson, I focused on:
 
 This project is a small webpage called **“Kiamehr Rockets”**, showcasing hero sections, cards for rockets, and placeholder sections for testimonials and contact.
 
-And This Project is a Learning sample from Dave Grey's tailwind course.
+And This Project is a Learning sample from **Dave Grey's** tailwind course.
 
 It’s a hands-on exercise to reinforce **class-based styling, responsiveness, and dark mode** in Tailwind CSS.

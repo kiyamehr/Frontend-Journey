@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Newspaper Layout</title>
+    <link rel="stylesheet" href="src/style.css" />
+  </head>
+  <body class="bg-slate-100 dark:bg-stone-900 m-3">
+    <header
+      class="bg-blue-500 text-black dark:bg-blue-950 py-3 text-center dark:text-white"
+    >
+      <h1 class="text-4xl">The Daily Local News</h1>
+    </header>
+    <div class="grid grid-cols-1 sm:grid-cols-[60%_40%]  w-full">
+      <section id="breaking-news">
+        <article
+          class="bg-slate-300 text-black dark:bg-stone-800 dark:text-white text-left p-3 my-4"
+        >
+          <h2 class="text-3xl mb-4">
+            Breaking News: Volcano Eruption Disrupts Tourism
+          </h2>
+
+          <p class="mb-4">
+            Recently, a volcano erupted in a popular tourist destination. The
+            eruption has caused widespread panic and has disrupted tourism in
+            the area. The volcano has been spewing lava and ash for several days
+            now, and authorities are urging residents and tourists to evacuate
+            the area immediately. The eruption has also caused a number of
+            flights to be cancelled, leaving many tourists stranded. The
+            situation is still developing, and authorities are working to
+            contain the eruption and ensure the safety of everyone in the area.
+          </p>
+        </article>
+
+        <article
+          class="bg-slate-300 text-black dark:bg-stone-800 dark:text-white text-left p-3 my-4"
+        >
+          <h2 class="text-3xl mb-4">Technology: The Rise of AI</h2>
+
+          <p class="mb-4">
+            Artificial intelligence (AI) is changing the way we live and work.
+            From self-driving cars to virtual assistants, AI is revolutionizing
+            the world around us. But what exactly is AI, and how does it work?
+            In this article, we'll explore the rise of AI and its impact on
+            society.
+          </p>
+        </article>
+      </section>
+
+      <section
+        id="news-img"
+        class="bg-stone-400 dark:bg-stone-700 my-4 flex items-center justify-center w-full py-4 sm:w-5/6 mx-auto"
+      >
+        <img
+          class="rounded-2xl"
+          width="200"
+          src="https://cdn.freecodecamp.org/curriculum/labs/volcano.jpg"
+          alt="Image OF A Volcano"
+        />
+      </section>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-[33%_33%_33%] gap-2">
+      <article class="bg-stone-600 rounded-2xl p-2">
+        <h3 class="text-2xl text-stone-100 mb-4 font-bold">
+          Sports: Local Team Wins Championship
+        </h3>
+
+        <p class="text-stone-100">
+          Hockey fans are celebrating today as the local team has won the
+          championship. The team, which has been on a winning streak all season,
+          clinched the title in a thrilling final match. Fans took to the
+          streets to celebrate the victory, waving flags and chanting the team's
+          name
+        </p>
+      </article>
+
+      <article class="bg-stone-600 rounded-2xl p-2">
+        <h3 class="text-2xl text-stone-100 mb-4 font-bold">
+          Sports: Local Team Wins Championship
+        </h3>
+
+        <p class="text-stone-100">
+          Hockey fans are celebrating today as the local team has won the
+          championship. The team, which has been on a winning streak all season,
+          clinched the title in a thrilling final match. Fans took to the
+          streets to celebrate the victory, waving flags and chanting the team's
+          name
+        </p>
+      </article>
+      <article class="bg-stone-600 rounded-2xl p-2">
+        <h3 class="text-2xl text-stone-100 mb-4 font-bold">
+          Sports: Local Team Wins Championship
+        </h3>
+
+        <p class="text-stone-100">
+          Hockey fans are celebrating today as the local team has won the
+          championship. The team, which has been on a winning streak all season,
+          clinched the title in a thrilling final match. Fans took to the
+          streets to celebrate the victory, waving flags and chanting the team's
+          name
+        </p>
+      </article>
+    </div>
+
+
+    <form action="" class="my-6 w-full">
+      <div class="flex flex-col mx-auto w-2/3 justify-center">
+        <label for="name" class="text-stone-100">Your Name:</label>
+        <input class="px-2 block bg-stone-100 rounded-sm mt-2  invalid:border-red-800 valid:border-green-900 border-2 border-transparent outline-none" type="text" id="name" name="name" required>
+
+        <label for="email" class="text-stone-100">Your Email:</label>
+        <input class="px-2 block bg-stone-100 rounded-sm mt-2 invalid:border-red-800 valid:border-green-900 border-2 border-transparent outline-none" type="email" id="email" name="email" required>
+
+        <label for="message" class="my-4 text-stone-100"> Your Message: </label>
+        <textarea class="block bg-stone-100 p-2 rounded-sm" name="message" rows="10" cols="30" id="message" placeholder="your message..."></textarea>
+        
+        <button class="my-4 p-4 bg-emerald-600 w-1/3 font-bold text-black rounded-2xl cursor-pointer hover:bg-emerald-800 hover:text-stone-100 transition-colors" type="submit">SUBMIT</button>
+      </div>
+
+    </form>
+  </body>
+</html>

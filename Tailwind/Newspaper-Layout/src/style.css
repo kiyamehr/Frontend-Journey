@@ -1,0 +1,9 @@
+@import "tailwindcss";  
+
+.black-color {
+    background-color: rgb(29, 29, 29);
+}
+
+.grid-60-40 {
+    grid-template-columns: 60% 40%;
+}

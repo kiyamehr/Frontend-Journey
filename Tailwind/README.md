@@ -27,16 +27,6 @@ Here you’ll find step-by-step Tailwind experiments, component recreations, and
   - Responsive sections
 - Using Tailwind plugins
 
-## 📁 Structure of This Repo
-
-```text
-📦 tailwind-course
-┣ 📂 01-Lesson01
-┣ 📂 02-Lesson02
-┣ 📂 03-Lesson03
-┣ 📂 04-lesson04
-````
-
 Each folder represents a section from Dave Gray’s course, with my own code experiments added in.
 
 ### 2️⃣ Install Tailwind (if using build workflow)

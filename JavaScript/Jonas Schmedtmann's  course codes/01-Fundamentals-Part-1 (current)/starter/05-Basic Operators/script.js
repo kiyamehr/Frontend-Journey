@@ -40,3 +40,7 @@ console.log(ageKia >= 23); // > < >= <=
 
 console.log(now - 2007 >= now - 1999);
 console.log(now - 1999 >= now - 2007);
+
+const avg = (ageKia + ageMehrgun) / 2;
+
+console.log(avg);

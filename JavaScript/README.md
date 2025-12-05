@@ -37,5 +37,3 @@ This folder includes:
 
 To document my learning journey in public and stay consistent
 while building real frontend skills.
-
-This folder is not about perfect code — it’s about progress.

@@ -34,3 +34,7 @@ if (friends.includes("Janice")) {
   friends.pop("Janice");
   console.log(friends);
 }
+
+const bills = [200, 100, 200, 200000];
+// summing members of an array:
+const tipTotal = bills.reduce((total, currentNum) => total + currentNum, 0); // 0 +10 , 10 + 20

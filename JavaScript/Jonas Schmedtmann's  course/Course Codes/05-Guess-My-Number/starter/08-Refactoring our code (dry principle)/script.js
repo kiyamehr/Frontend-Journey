@@ -19,15 +19,15 @@ document.querySelector(".again").addEventListener("click", function () {
   document.querySelector(".number").textContent = randomNumber;
   displayMessage("Start guessing...");
   document.querySelector(".guess").value = " ";
-  // document.querySelector(".number").textContent = "?";
+  document.querySelector(".number").textContent = "?";
 
   // Restoring Styles
   document.querySelector("body").style.backgroundColor = "#222";
   document.querySelector(".number").style.width = "15rem";
 });
 
-// document.querySelector(".number").textContent = "?";
-document.querySelector(".number").textContent = randomNumber;
+document.querySelector(".number").textContent = "?";
+// document.querySelector(".number").textContent = randomNumber;
 
 // Game Logic
 document.querySelector(".check").addEventListener("click", function () {
@@ -46,7 +46,7 @@ document.querySelector(".check").addEventListener("click", function () {
     // when player wins
     displayMessage("🎉 Right Number!!!");
 
-    // document.querySelector(".number").textContent = randomNumber;
+    document.querySelector(".number").textContent = randomNumber;
 
     // changing styles for WINNING:
     document.querySelector("body").style.backgroundColor = "#60b347";

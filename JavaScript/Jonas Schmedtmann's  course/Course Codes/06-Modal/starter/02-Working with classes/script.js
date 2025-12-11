@@ -29,4 +29,3 @@ for (let i = 0; i < btnOpenModal.length; i++) {
 // we wont add () cause we dont want to js immidietly run the function
 btnCloseModal.addEventListener("click", closeModal); // NO "()" Cause we arent calling the function
 overlay.addEventListener("click", closeModal);
-console.log("fuck");

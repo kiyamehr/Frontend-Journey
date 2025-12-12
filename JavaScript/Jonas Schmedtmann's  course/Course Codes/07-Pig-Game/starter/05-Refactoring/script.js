@@ -109,7 +109,7 @@ btnHold.addEventListener('click', function () {
       playerScores[activePlayer];
 
     // checking if score >= 100
-    if (playerScores[activePlayer] >= 10) {
+    if (playerScores[activePlayer] >= 100) {
       playing = false;
       diceEl.classList.add('hidden');
       document
@@ -126,6 +126,4 @@ btnHold.addEventListener('click', function () {
 });
 
 // Reset button
-btnNew.addEventListener('click', function () {
-  init();
-});
+btnNew.addEventListener('click', init);

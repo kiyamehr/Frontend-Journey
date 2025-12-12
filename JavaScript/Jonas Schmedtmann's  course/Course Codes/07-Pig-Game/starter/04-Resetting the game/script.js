@@ -36,6 +36,28 @@ const switchPlayer = function () {
   player1El.classList.toggle('player--active'); // if not remove it
 };
 
+function setToZero(element) {
+  // set textcontent to zero
+  element.textContent = 0;
+}
+
+// removing player--winner class
+const removeWinner = element => element.classList.remove('player--winner');
+
+// set the active plyer
+const setActivePlayer = function (element) {
+  // method 1
+  if (element === 0) {
+    player0El.classList.add('player--active');
+    player1El.classList.remove('player--active');
+  } else {
+    player1El.classList.add('player--active');
+    player0El.classList.remove('player--active');
+  }
+};
+
+// const setActivePlayer = element => .classList.add('player--active');
+
 // Rolling Dice Functionality
 
 btnRoll.addEventListener('click', function () {
@@ -70,7 +92,7 @@ btnHold.addEventListener('click', function () {
       playerScores[activePlayer];
 
     // checking if score >= 100
-    if (playerScores[activePlayer] >= 10) {
+    if (playerScores[activePlayer] >= 20) {
       playing = false;
       diceEl.classList.add('hidden');
       document
@@ -84,4 +106,21 @@ btnHold.addEventListener('click', function () {
       switchPlayer();
     }
   }
+});
+
+// Reset button
+btnNew.addEventListener('click', function () {
+  playing = true;
+  diceEl.classList.add('hidden');
+  setToZero(Current0El);
+  setToZero(Current1El);
+  setToZero(score0El);
+  setToZero(score1El);
+  for (let i = 0; i < playerScores.length; i++) playerScores[i] = 0;
+  removeWinner(player0El);
+  removeWinner(player1El);
+
+  const randomPlayer = Math.trunc(Math.random() * 2);
+  setActivePlayer(activePlayer);
+  activePlayer = randomPlayer;
 });

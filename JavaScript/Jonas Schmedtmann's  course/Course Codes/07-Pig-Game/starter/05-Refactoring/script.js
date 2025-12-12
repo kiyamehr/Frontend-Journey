@@ -12,36 +12,6 @@ const btnNew = document.querySelector('.btn--new');
 const btnHold = document.querySelector('.btn--hold');
 const diceEl = document.querySelector('.dice');
 
-// setting the game contininue or not
-let playerScores, activePlayer, currentScore, playing;
-
-// initialization
-const init = function () {
-  // starting conditions
-  playing = true;
-  playerScores = [0, 0];
-  activePlayer = 0;
-  currentScore = 0;
-
-  diceEl.classList.add('hidden');
-
-  setToZero(Current0El);
-  setToZero(Current1El);
-  setToZero(score0El);
-  setToZero(score1El);
-
-  for (let i = 0; i < playerScores.length; i++) playerScores[i] = 0;
-
-  removeWinner(player0El);
-  removeWinner(player1El);
-
-  const randomPlayer = Math.trunc(Math.random() * 2);
-  setActivePlayer(activePlayer);
-  activePlayer = randomPlayer;
-};
-
-init();
-
 // functions
 const switchPlayer = function () {
   // switch to next player.
@@ -73,6 +43,35 @@ const setActivePlayer = function (element) {
     player0El.classList.remove('player--active');
   }
 };
+
+// setting the game variables
+let playerScores, activePlayer, currentScore, playing;
+
+// initialization (so all the starting functions are here and we can call em again on reset button)
+const init = function () {
+  // starting conditions
+  playing = true;
+  playerScores = [0, 0];
+  currentScore = 0;
+
+  const randomPlayer = Math.trunc(Math.random() * 2);
+  activePlayer = randomPlayer;
+  setActivePlayer(activePlayer);
+
+  diceEl.classList.add('hidden');
+
+  setToZero(Current0El);
+  setToZero(Current1El);
+  setToZero(score0El);
+  setToZero(score1El);
+
+  for (let i = 0; i < playerScores.length; i++) playerScores[i] = 0;
+
+  removeWinner(player0El);
+  removeWinner(player1El);
+};
+
+init();
 
 // const setActivePlayer = element => .classList.add('player--active');
 

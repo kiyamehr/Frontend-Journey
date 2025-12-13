@@ -62,7 +62,5 @@ const btnEdit = document.querySelectorAll(".edit-icon");
 btnAddTask.addEventListener("click", addTask);
 
 document.addEventListener("keydown", function (event) {
-  if (event.key === "Enter") {
-    addTask();
-  }
+  if (event.key === "Enter") addTask();
 });

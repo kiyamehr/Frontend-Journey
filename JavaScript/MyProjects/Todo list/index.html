@@ -25,7 +25,7 @@
 
       <!-- input and add button are here  -->
       <section id="todo-list-input-add-btn">
-        <form
+        <div
           action=""
           class="flex justify-center items-center mx-auto gap-0.5"
           id="form"
@@ -47,12 +47,12 @@
               Add
             </button>
           </div>
-        </form>
+        </div>
       </section>
 
       <!-- tasks section -->
       <section it="tasks" class="mt-4">
-        <ul>
+        <ul id="tasks-list">
           <!-- taskitems -->
           <li
             class="flex justify-between border-2 border-x-0 border-t-0 mt-7 dark:border-cyan-800/60 pb-2 sm:justify-center sm:gap-56 sm:w-4/6 sm:mx-auto"
@@ -68,8 +68,7 @@
               <label
                 for="checkbox"
                 class="checkbox-label cursor-pointer dark:text-neutral-300 font-bold"
-              >
-                Hit The Gym
+                >Hit The Gym
               </label>
             </section>
 

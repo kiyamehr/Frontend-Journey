@@ -23,15 +23,15 @@ const createListItem = function (taskLabel, tasksNum) {
             <!-- right section that displays delete button and edit button  -->
             <section>
               <button
-                class="bg-yellow-500 px-2 py-1 rounded-xl dark:text-neutral-600 hover:bg-yellow-600 hover:text-neutral-300 transition-all duration-200 active:translate-y-0.5 cursor-pointer"
+                class="bg-yellow-500 rounded-xl dark:text-neutral-600 hover:bg-yellow-600 hover:text-neutral-300 transition-all duration-200 active:translate-y-0.5 cursor-pointer"
               >
-                <i class="edit-icon fa-solid fa-pen-to-square"></i>
+                <i class="edit-icon fa-solid fa-pen-to-square px-3 py-2"></i>
               </button>
 
               <button
-                class="delete-icon bg-red-600 px-2 py-1 rounded-xl dark:text-neutral-300 hover:bg-red-500 hover:text-neutral-600 transition-all duration-200 active:translate-y-0.5 cursor-pointer"
+                class="delete-icon bg-red-600 rounded-xl dark:text-neutral-300 hover:bg-red-500 hover:text-neutral-600 transition-all duration-200 active:translate-y-0.5 cursor-pointer"
               >
-                <i class="fa-solid fa-trash"></i>
+                <i class="fa-solid fa-trash px-3 py-2"></i>
               </button>
             </section>
           </li>`;
@@ -41,7 +41,6 @@ const createListItem = function (taskLabel, tasksNum) {
 let tasksNum = 0;
 const addTask = () => {
   let taskValue = inputTaskEl.value;
-  console.log(taskValue);
   // to check if the input value was none
   if (taskValue) {
     inputTaskEl.value = "";
@@ -86,4 +85,26 @@ tasksList.addEventListener("change", (e) => {
     const checkBoxLabel = e.target.nextElementSibling; // select the next element after the input so it would pass the input and select the Label
     checkBoxLabel.classList.toggle("line-through");
   }
+});
+
+// removing listItem if trashIcon is Clicked
+
+// for (let i = 0; i < btnDelete.length; i++) {
+//   btnDelete[i].addEventListener("click", function () {
+//     taskItems[i].classList.add("hidden");
+//   });
+// }
+
+// Event listener for the buttons that get clicked inside the ul
+tasksList.addEventListener("click", function (e) {
+  console.log(e);
+  // Delete Icon
+  // putting delte button value inside a variable
+  const deleteButton = e.target.closest(".fa-trash");
+
+  // if deleteButton = null then do nothing
+  if (!deleteButton) return;
+
+  // Search the li that owns the delete button and remove it
+  deleteButton.closest("li").remove();
 });

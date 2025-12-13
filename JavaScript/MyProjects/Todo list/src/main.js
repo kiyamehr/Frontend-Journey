@@ -3,19 +3,19 @@
 // create element function
 const createListItem = function (taskLabel, tasksNum) {
   return `<li
-            class="tasks-items flex justify-between border-2 border-x-0 border-t-0 mt-7 dark:border-cyan-800/60 pb-2 sm:justify-center sm:gap-56 sm:w-4/6 sm:mx-auto"
+            class="tasks-items flex justify-between border-2 border-x-0 border-t-0 mt-7 dark:border-cyan-800/60 pb-2 sm:justify-baseline sm:gap-56 sm:w-4/6 sm:mx-auto"
           >
             <!-- left side that displays checkbox and task iteself -->
-            <section class="flex justify-start gap-3 items-center">
+            <section class="flex justify-start items-center">
               <input
                 type="checkbox"
                 id="checkbox${tasksNum}"
-                class="checkbox"
+                class="checkbox cursor-pointer"
                 name="checkbox"
               />
               <label
                 for="checkbox${tasksNum}"
-                class="checkbox-label cursor-pointer dark:text-neutral-300 font-bold"
+                class="checkbox-label  pl-3 cursor-pointer dark:text-neutral-300 font-bold"
                 >${taskLabel}
               </label>
             </section>
@@ -67,6 +67,17 @@ const btnEdit = document.querySelectorAll(".edit-icon");
 // add eventListener for add button
 btnAddTask.addEventListener("click", addTask);
 
+// Add task when Enter Is Clicked
 document.addEventListener("keydown", function (event) {
   if (event.key === "Enter") addTask();
+});
+
+// add line over text when checkbox is checked
+tasksList.addEventListener("change", (e) => {
+  // Listens for any change events that happend in the ul
+  if (e.target.type === "checkbox") {
+    // if the change type was checkbox
+    const checkBoxLabel = e.target.nextElementSibling; // select the next element after the input so it would pass the input and select the Label
+    checkBoxLabel.classList.toggle("line-through");
+  }
 });

@@ -1,20 +1,20 @@
 "use strict";
 
 // create element function
-const createListItem = function (taskLabel) {
+const createListItem = function (taskLabel, tasksNum) {
   return `<li
-            class="flex justify-between border-2 border-x-0 border-t-0 mt-7 dark:border-cyan-800/60 pb-2 sm:justify-center sm:gap-56 sm:w-4/6 sm:mx-auto"
+            class="tasks-items flex justify-between border-2 border-x-0 border-t-0 mt-7 dark:border-cyan-800/60 pb-2 sm:justify-center sm:gap-56 sm:w-4/6 sm:mx-auto"
           >
             <!-- left side that displays checkbox and task iteself -->
             <section class="flex justify-start gap-3 items-center">
               <input
                 type="checkbox"
-                id="checkbox"
+                id="checkbox${tasksNum}"
                 class="checkbox"
                 name="checkbox"
               />
               <label
-                for="checkbox"
+                for="checkbox${tasksNum}"
                 class="checkbox-label cursor-pointer dark:text-neutral-300 font-bold"
                 >${taskLabel}
               </label>
@@ -38,10 +38,15 @@ const createListItem = function (taskLabel) {
 };
 
 // adding task to ul
+let tasksNum = 0;
 const addTask = () => {
   let taskValue = inputTaskEl.value;
-  tasksList.insertAdjacentHTML("beforeend", createListItem(taskValue));
   inputTaskEl.value = "";
+  tasksNum += 1;
+  tasksList.insertAdjacentHTML(
+    "beforeend",
+    createListItem(taskValue, tasksNum)
+  );
 };
 
 // Definings elements inside classes
@@ -51,6 +56,7 @@ const btnAddTask = document.getElementById("add-task");
 
 const btnCheckBox = document.querySelectorAll(".checkbox");
 const btncheckBoxLabel = document.querySelectorAll(".checkbox-label");
+const taskItems = document.querySelectorAll(".tasks-items");
 const tasksList = document.getElementById("tasks-list");
 
 const btnDelete = document.querySelectorAll(".delete-icon");

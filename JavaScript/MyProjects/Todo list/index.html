@@ -14,6 +14,7 @@
   <body
     class="dark:bg-stone-800 flex items-center justify-center min-h-screen w-screen font-sans"
   >
+    <!-- the box which the items will be displayed -->
     <div
       id="list-box"
       class="min-w-9/12 min-h-70 border-shadow rounded-xl border-none p-4"
@@ -21,7 +22,9 @@
       <h1 class="font-bold text-3xl dark:text-neutral-300">
         Kiamehr's To-do List
       </h1>
-      <section id="todo-list-items">
+
+      <!-- input and add button are here  -->
+      <section id="todo-list-input-add-btn">
         <form
           action=""
           class="flex justify-center items-center mx-auto gap-0.5"
@@ -47,11 +50,14 @@
         </form>
       </section>
 
-      <section class="mt-4">
+      <!-- tasks section -->
+      <section it="tasks" class="mt-4">
         <ul>
+          <!-- taskitems -->
           <li
             class="flex justify-between border-2 border-x-0 border-t-0 mt-7 dark:border-cyan-800/60 pb-2 sm:justify-center sm:gap-56 sm:w-4/6 sm:mx-auto"
           >
+            <!-- left side that displays checkbox and task iteself -->
             <section class="flex justify-start gap-3 items-center">
               <input
                 type="checkbox"
@@ -61,20 +67,22 @@
               />
               <label
                 for="checkbox"
-                class="cursor-pointer dark:text-neutral-300 font-bold"
+                class="checkbox-label cursor-pointer dark:text-neutral-300 font-bold"
               >
                 Hit The Gym
               </label>
             </section>
+
+            <!-- right section that displays delete button and edit button  -->
             <section>
               <button
                 class="bg-yellow-500 px-2 py-1 rounded-xl dark:text-neutral-600 hover:bg-yellow-600 hover:text-neutral-300 transition-all duration-200 active:translate-y-0.5 cursor-pointer"
               >
-                <i class="fa-solid fa-pen-to-square"></i>
+                <i class="edit-icon fa-solid fa-pen-to-square"></i>
               </button>
 
               <button
-                class="bg-red-600 px-2 py-1 rounded-xl dark:text-neutral-300 hover:bg-red-500 hover:text-neutral-600 transition-all duration-200 active:translate-y-0.5 cursor-pointer"
+                class="delete-icon bg-red-600 px-2 py-1 rounded-xl dark:text-neutral-300 hover:bg-red-500 hover:text-neutral-600 transition-all duration-200 active:translate-y-0.5 cursor-pointer"
               >
                 <i class="fa-solid fa-trash"></i>
               </button>
@@ -83,6 +91,9 @@
         </ul>
       </section>
     </div>
+
+    <!-- javascript  -->
+    <script src="src/main.js"></script>
   </body>
 </html>
 

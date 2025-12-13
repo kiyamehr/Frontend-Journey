@@ -41,12 +41,18 @@ const createListItem = function (taskLabel, tasksNum) {
 let tasksNum = 0;
 const addTask = () => {
   let taskValue = inputTaskEl.value;
-  inputTaskEl.value = "";
-  tasksNum += 1;
-  tasksList.insertAdjacentHTML(
-    "beforeend",
-    createListItem(taskValue, tasksNum)
-  );
+  console.log(taskValue);
+  // to check if the input value was none
+  if (taskValue) {
+    inputTaskEl.value = "";
+    tasksNum += 1;
+    tasksList.insertAdjacentHTML(
+      "beforeend",
+      createListItem(taskValue, tasksNum)
+    );
+  } else {
+    alert("Empty Value Cannot Be Added as task");
+  }
 };
 
 // Definings elements inside classes

@@ -10,7 +10,7 @@
     />
   </head>
   <body
-    class="dark:bg-stone-800 flex items-center justify-center min-h-screen w-screen font-sans"
+    class="dark:bg-stone-800 flex items-center justify-center min-h-screen w-screen font-sans relative"
   >
     <!-- the box which the items will be displayed -->
     <div
@@ -35,7 +35,7 @@
             <input
               id="input-task"
               type="text"
-              class="outline-none px-2 py-0.5 dark:text-neutral-300 border-2 border-y-0 border-r-0 border-transparent focus:border-green-500 transform-border duration-500"
+              class="outline-none px-2 py-0.5 w-full dark:text-neutral-300 border-2 border-y-0 border-r-0 border-transparent focus:border-green-500 transform-border duration-500"
               placeholder="Add Your Task..."
             />
             <button
@@ -87,6 +87,36 @@
             </section>
           </li>
         </ul>
+      </section>
+    </div>
+
+    <!-- blurry overlay -->
+    <div
+      id="overlay"
+      class="absolute w-screen h-screen dark:bg-neutral-700/60 backdrop-blur-xs z-5 hidden"
+    ></div>
+
+    <div
+      id="edit-box"
+      class="absolute w-xl h-70 rounded-lg p-4 bg-transparent border-shadow z-10 hidden"
+    >
+      <h1 class="font-bold text-3xl text-[#fff6df]">Edit Your Task</h1>
+
+      <section
+        class="flex justify-center items-center flex-col gap-2.5 w-full h-[70%] my-auto"
+      >
+        <input
+          id="edit-task-input"
+          type="text"
+          class="border-2 w-4/6 rounded-sm outline-none text-[#fff6df] focus:border-2 focus:border-yellow-600 transition-all duration-300 px-3 py-0.5"
+        />
+        <button
+          id="edit-task-button"
+          class="px-3 py-2 bg-yellow-500 rounded-xl dark:text-neutral-600 hover:bg-yellow-600 text-[#fff6df] hover:text-neutral-300 transition-all duration-200 active:translate-y-0.5 cursor-pointer"
+        >
+          <span class="text-[#fff6df]">Edit</span>
+          <i class="fa fa-pen-to-square text-[#fff6df]"></i>
+        </button>
       </section>
     </div>
 

@@ -97,9 +97,8 @@ tasksList.addEventListener("change", (e) => {
 
 // Event listener for the buttons that get clicked inside the ul
 tasksList.addEventListener("click", function (e) {
-  console.log(e);
   // Delete Icon
-  // putting delte button value inside a variable
+  // find the element that has the class fa-trash
   const deleteButton = e.target.closest(".fa-trash");
 
   // if deleteButton = null then do nothing

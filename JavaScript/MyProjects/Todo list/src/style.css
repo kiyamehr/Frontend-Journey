@@ -1,0 +1,9 @@
+@import "tailwindcss";
+
+.border-shadow {
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.checked {
+  border-color: #016630;
+}

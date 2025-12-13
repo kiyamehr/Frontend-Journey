@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>todolist</title>
+    <link rel="stylesheet" href="./src/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+  </head>
+  <body
+    class="dark:bg-stone-800 flex items-center justify-center min-h-screen w-screen font-sans"
+  >
+    <div
+      id="list-box"
+      class="min-w-9/12 min-h-70 border-shadow rounded-xl border-none p-4"
+    >
+      <h1 class="font-bold text-3xl dark:text-neutral-300">
+        Kiamehr's To-do List
+      </h1>
+      <section id="todo-list-items">
+        <form
+          action=""
+          class="flex justify-center items-center mx-auto gap-0.5"
+          id="form"
+        >
+          <div
+            id="task-input-div"
+            class="bg-none border-2 border-transparent border-b-cyan-800 mt-3 rounded-xs min-w-4/6 flex justify-baseline gap-10 sm:justify-between"
+          >
+            <input
+              id="input-task"
+              type="text"
+              class="outline-none px-2 py-0.5 dark:text-neutral-300 border-2 border-y-0 border-r-0 border-transparent focus:border-green-500 transform-border duration-500"
+              placeholder="Add Your Task..."
+            />
+            <button
+              id="add-task"
+              class="cursor-pointer dark:bg-cyan-800 px-3 py-0.5 rounded-xs dark:text-neutral-300 mb-0.5 dark:hover:bg-cyan-500 duration-300 transition-all active:translate-y-0.5"
+            >
+              Add
+            </button>
+          </div>
+        </form>
+      </section>
+
+      <section class="mt-4">
+        <ul>
+          <li
+            class="flex justify-between border-2 border-x-0 border-t-0 mt-7 dark:border-cyan-800/60 pb-2 sm:justify-center sm:gap-56 sm:w-4/6 sm:mx-auto"
+          >
+            <section class="flex justify-start gap-3 items-center">
+              <input
+                type="checkbox"
+                id="checkbox"
+                class="checkbox"
+                name="checkbox"
+              />
+              <label
+                for="checkbox"
+                class="cursor-pointer dark:text-neutral-300 font-bold"
+              >
+                Hit The Gym
+              </label>
+            </section>
+            <section>
+              <button
+                class="bg-yellow-500 px-2 py-1 rounded-xl dark:text-neutral-600 hover:bg-yellow-600 hover:text-neutral-300 transition-all duration-200 active:translate-y-0.5 cursor-pointer"
+              >
+                <i class="fa-solid fa-pen-to-square"></i>
+              </button>
+
+              <button
+                class="bg-red-600 px-2 py-1 rounded-xl dark:text-neutral-300 hover:bg-red-500 hover:text-neutral-600 transition-all duration-200 active:translate-y-0.5 cursor-pointer"
+              >
+                <i class="fa-solid fa-trash"></i>
+              </button>
+            </section>
+          </li>
+        </ul>
+      </section>
+    </div>
+  </body>
+</html>
+
+<!-- <script src="src/main.js"></script> -->

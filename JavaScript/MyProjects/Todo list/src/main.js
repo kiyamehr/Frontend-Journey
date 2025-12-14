@@ -3,7 +3,7 @@
 // create List Item Element
 const createListItem = function (taskLabel, tasksNum) {
   return `<li
-            class="tasks-items flex justify-between border-2 border-x-0 border-t-0 mt-7 dark:border-cyan-800/60 pb-2 sm:justify-baseline sm:gap-56 sm:w-4/6 sm:mx-auto"
+            class="tasks-items flex justify-between border-2 border-x-0 border-t-0 mt-7 dark:border-cyan-800/60 pb-2 sm:justify-between sm:gap-56 sm:w-4/6 sm:mx-auto"
           >
             <!-- left side that displays checkbox and task iteself -->
             <section class="flex justify-start items-center">
@@ -58,6 +58,7 @@ const addTask = () => {
 
 const removeHiddenClass = (htmlEl) => htmlEl.classList.remove("hidden");
 const addHiddenClass = (htmlEl) => htmlEl.classList.add("hidden");
+
 // Definings elements inside Variables
 
 const inputTaskEl = document.getElementById("input-task");

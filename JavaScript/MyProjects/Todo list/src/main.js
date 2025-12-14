@@ -1,6 +1,6 @@
 "use strict";
 
-// create element function
+// create List Item Element
 const createListItem = function (taskLabel, tasksNum) {
   return `<li
             class="tasks-items flex justify-between border-2 border-x-0 border-t-0 mt-7 dark:border-cyan-800/60 pb-2 sm:justify-baseline sm:gap-56 sm:w-4/6 sm:mx-auto"
@@ -43,6 +43,7 @@ const addTask = () => {
   let taskValue = inputTaskEl.value;
   // to check if the input value was none
   if (taskValue) {
+    // if it wasn't
     inputTaskEl.value = "";
     tasksNum += 1;
     tasksList.insertAdjacentHTML(
@@ -50,11 +51,14 @@ const addTask = () => {
       createListItem(taskValue, tasksNum)
     );
   } else {
+    // If it was null
     alert("Empty Value Cannot Be Added as task");
   }
 };
 
-// Definings elements inside classes
+const removeHiddenClass = (htmlEl) => htmlEl.classList.remove("hidden");
+const addHiddenClass = (htmlEl) => htmlEl.classList.add("hidden");
+// Definings elements inside Variables
 
 const inputTaskEl = document.getElementById("input-task");
 const btnAddTask = document.getElementById("add-task");
@@ -66,6 +70,10 @@ const tasksList = document.getElementById("tasks-list");
 
 const btnDelete = document.querySelectorAll(".delete-icon");
 const btnEdit = document.querySelectorAll(".edit-icon");
+
+const overlay = document.getElementById("overlay");
+const editModal = document.getElementById("edit-modal");
+const btnClostModal = document.getElementById("close-modal-button");
 
 // Get The taskvalue from input
 
@@ -87,23 +95,44 @@ tasksList.addEventListener("change", (e) => {
   }
 });
 
-// removing listItem if trashIcon is Clicked
-
-// for (let i = 0; i < btnDelete.length; i++) {
-//   btnDelete[i].addEventListener("click", function () {
-//     taskItems[i].classList.add("hidden");
-//   });
-// }
-
 // Event listener for the buttons that get clicked inside the ul
 tasksList.addEventListener("click", function (e) {
   // Delete Icon
   // find the element that has the class fa-trash
   const deleteButton = e.target.closest(".fa-trash");
-
   // if deleteButton = null then do nothing
   if (!deleteButton) return;
 
   // Search the li that owns the delete button and remove it
   deleteButton.closest("li").remove();
+});
+
+// Edit Button
+// opening editing modal on editbutton click
+tasksList.addEventListener("click", function (e) {
+  const editButton = e.target.closest(".fa-pen-to-square");
+  if (editButton) {
+    removeHiddenClass(overlay);
+    removeHiddenClass(editModal);
+  }
+});
+
+// X button to close the modal
+btnClostModal.addEventListener("click", function () {
+  addHiddenClass(overlay);
+  addHiddenClass(editModal);
+});
+
+// when overlay is clicked close the modal
+overlay.addEventListener("click", function () {
+  addHiddenClass(editModal);
+  addHiddenClass(overlay);
+});
+
+// close the modal with escape key
+document.addEventListener("keydown", function (e) {
+  if (e.key === "Escape") {
+    addHiddenClass(overlay);
+    addHiddenClass(editModal);
+  }
 });

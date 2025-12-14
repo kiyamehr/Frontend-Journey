@@ -93,14 +93,22 @@
     <!-- blurry overlay -->
     <div
       id="overlay"
-      class="absolute w-screen h-screen dark:bg-neutral-700/60 backdrop-blur-xs z-5 hidden"
+      class="absolute w-screen h-screen dark:bg-neutral-700/60 backdrop-blur-xs z-5"
     ></div>
 
     <div
-      id="edit-box"
-      class="absolute w-xl h-70 rounded-lg p-4 bg-transparent border-shadow z-10 hidden"
+      id="edit-modal"
+      class="absolute w-xl h-70 rounded-lg p-4 bg-transparent border-shadow z-10"
     >
-      <h1 class="font-bold text-3xl text-[#fff6df]">Edit Your Task</h1>
+      <section class="flex justify-between items-center">
+        <h1 class="font-bold text-3xl dark:text-[#fff6df] ml-2">
+          Edit Your Task
+        </h1>
+        <i
+          id="close-modal-button"
+          class="fa fa-x dark:text-[#fff6df] hover:bg-red-700 cursor-pointer transition-all active:translate-y-0.5 rounded-sm px-2 py-1"
+        ></i>
+      </section>
 
       <section
         class="flex justify-center items-center flex-col gap-2.5 w-full h-[70%] my-auto"

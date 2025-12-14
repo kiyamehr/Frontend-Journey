@@ -85,8 +85,10 @@ btnAddTask.addEventListener("click", addTask);
 
 // Add task when Enter Is Clicked
 document.addEventListener("keydown", function (event) {
-  if (overlay.classList.contains("hidden")) {
-    if (event.key === "Enter") addTask();
+  if (event.key === "Enter") {
+    if (overlay.classList.contains("hidden")) {
+      if (event.key === "Enter") addTask();
+    }
   }
 });
 // add line over text when checkbox is checked

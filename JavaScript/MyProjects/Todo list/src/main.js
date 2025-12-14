@@ -85,9 +85,10 @@ btnAddTask.addEventListener("click", addTask);
 
 // Add task when Enter Is Clicked
 document.addEventListener("keydown", function (event) {
-  if (event.key === "Enter") addTask();
+  if (overlay.classList.contains("hidden")) {
+    if (event.key === "Enter") addTask();
+  }
 });
-
 // add line over text when checkbox is checked
 tasksList.addEventListener("change", (e) => {
   // Listens for any change events that happend in the ul
@@ -132,7 +133,7 @@ tasksList.addEventListener("click", function (e) {
   currentTaskLabel = parentLi.querySelector(".task-label");
 
   // setting edit Input Value
-  editInput.value = currentTaskLabel.trim(); // removes the white space At the begining
+  editInput.value = currentTaskLabel.textContent.trim(); // removes the white space At the begining
 });
 
 // submit edit button

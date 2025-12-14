@@ -15,7 +15,7 @@ const createListItem = function (taskLabel, tasksNum) {
               />
               <label
                 for="checkbox${tasksNum}"
-                class="checkbox-label  pl-3 cursor-pointer dark:text-neutral-300 font-bold"
+                class="task-label checkbox-label  pl-3 cursor-pointer dark:text-neutral-300 font-bold"
                 >${taskLabel}
               </label>
             </section>
@@ -75,6 +75,9 @@ const overlay = document.getElementById("overlay");
 const editModal = document.getElementById("edit-modal");
 const btnClostModal = document.getElementById("close-modal-button");
 
+const editInput = document.getElementById("edit-task-input");
+const btnEditInput = document.getElementById("edit-task-button");
+
 // Get The taskvalue from input
 
 // add eventListener for add button
@@ -107,7 +110,7 @@ tasksList.addEventListener("click", function (e) {
   deleteButton.closest("li").remove();
 });
 
-// Edit Button
+// Edit Button ------
 // opening editing modal on editbutton click
 tasksList.addEventListener("click", function (e) {
   const editButton = e.target.closest(".fa-pen-to-square");
@@ -115,6 +118,33 @@ tasksList.addEventListener("click", function (e) {
     removeHiddenClass(overlay);
     removeHiddenClass(editModal);
   }
+});
+
+// setting edit input value
+let currentTaskLabel = null;
+tasksList.addEventListener("click", function (e) {
+  const editButton = e.target.closest(".fa-pen-to-square");
+  if (!editButton) return;
+
+  // first go up to the parent element
+  const parentLi = e.target.closest("li");
+  // there search for icon's sibling that is the label
+  currentTaskLabel = parentLi.querySelector(".task-label");
+
+  // setting edit Input Value
+  editInput.value = currentTaskLabel.trim(); // removes the white space At the begining
+});
+
+// submit edit button
+btnEditInput.addEventListener("click", function () {
+  if (!editInput.value) alert("You Cant Return Empty Value!");
+  if (!currentTaskLabel) return;
+
+  currentTaskLabel.textContent = editInput.value.trim();
+
+  addHiddenClass(overlay);
+  addHiddenClass(editModal);
+  currentTaskLabel = null;
 });
 
 // X button to close the modal

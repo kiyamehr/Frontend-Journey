@@ -49,7 +49,11 @@ document
 const data1 = [5, 2, 3];
 const data2 = [1, 5, 3, 9, 6, 1];
 
+// using bind
 const displayArr = poll.displayResults.bind(poll);
 
 displayArr('string', data1);
 displayArr('array', data2);
+
+// using call
+// poll.displayResults.call([...data1], 'string');

@@ -9,7 +9,6 @@ const poll = {
     // prompt text
     let optionText = '';
     for (const option of this.options) {
-      console.log(option);
       optionText += option + '\n';
     }
 
@@ -19,7 +18,7 @@ const poll = {
     );
 
     // check prompt 0 > x > len options
-    if (askQuestionPompt >= 0 && askQuestionPompt <= this.options.length) {
+    if (askQuestionPompt >= 0 && askQuestionPompt < this.options.length) {
       this.answers[askQuestionPompt] += 1;
     } else {
       alert('Number Out of options Range!');
@@ -29,13 +28,13 @@ const poll = {
     return this.displayResults();
   },
 
-  displayResults(type = 'array') {
+  displayResults(type = 'array', array = this.answers) {
     // type is either array or string
     if (type === 'array') {
-      console.log(this.answers);
+      console.log(array);
     } else if (type === 'string') {
       let pollanswer = '';
-      for (const [index, voteNum] of this.answers.entries()) {
+      for (const [index, voteNum] of array.entries()) {
         pollanswer += `${voteNum}, `;
       }
       console.log(`Poll Results Were ${pollanswer}`);
@@ -47,5 +46,10 @@ document
   .querySelector('.poll')
   .addEventListener('click', poll.registerNewAnswer.bind(poll)); // setting the 'this' method to poll
 
-// poll.displayResults("array");
-// poll.displayResults("string");
+const data1 = [5, 2, 3];
+const data2 = [1, 5, 3, 9, 6, 1];
+
+const displayArr = poll.displayResults.bind(poll);
+
+displayArr('string', data1);
+displayArr('array', data2);

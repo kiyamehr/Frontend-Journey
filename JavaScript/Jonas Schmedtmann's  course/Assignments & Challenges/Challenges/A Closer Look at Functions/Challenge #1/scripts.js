@@ -3,7 +3,7 @@
 const poll = {
   question: "What is your favourite programming language?",
   options: ["0: JavaScript", "1: Python", "2: Rust", "3: C++"],
-  answers: new Array(4).fill(0),
+  answers: [0, 1, 0, 2],
 
   registerNewAnswer() {
     // prompt text
@@ -31,11 +31,13 @@ const poll = {
     if (type === "array") {
       console.log(this.answers);
     } else if (type === "string") {
-      for (const answer of this.answers) {
-        console.log(answer);
+      let pollanswer = "";
+      for (const [index, voteNum] of this.answers.entries()) {
+        pollanswer += `${voteNum}, `;
         // [js, py, rust, cPlus];
         // console.log(`Poll results are ${js}, ${py}, ${rust}, ${cPlus}`);
       }
+      console.log(`Poll Results Were ${pollanswer}`);
     }
   },
 };

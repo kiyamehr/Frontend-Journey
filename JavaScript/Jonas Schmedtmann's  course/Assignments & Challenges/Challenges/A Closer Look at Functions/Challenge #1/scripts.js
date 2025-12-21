@@ -35,8 +35,11 @@ const poll = {
     } else if (type === 'string') {
       let pollanswer = '';
       for (const [index, voteNum] of array.entries()) {
+        // method 1
         pollanswer += `${voteNum}, `;
       }
+      // method 2
+      // console.log(`Poll resulsts are ${this.answers.join(', ')}`);
       console.log(`Poll Results Were ${pollanswer}`);
     }
   },

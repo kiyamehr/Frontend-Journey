@@ -59,28 +59,29 @@ const inputClosePin = document.querySelector('.form__input--pin');
 
 // functions
 
-//* emptying the starter elements
-containerMovements.innerHTML = '';
+const displayMovements = function (movements) {
+  containerMovements.innerHTML = '';
 
-account1.movements.forEach(function (mov, i) {
-  // setting the type (withdraw or deposit)
-  const type = mov > 0 ? 'deposit' : 'withdrawal';
+  movements.forEach(function (mov, i) {
+    const type = mov > 0 ? 'deposit' : 'withdrawal';
 
-  // the html element
-  const html = `<div class="movements__row">
-    <div class="movements__type movements__type--${type}">
-      ${i + 1} ${type}
-    </div>
-    <div class="movements__date">3 days ago</div>
-    <div class="movements__value">${mov}€</div>
-  </div>;`;
+    const html = `
+      <div class="movements__row">
+        <div class="movements__type movements__type--${type}">${
+      i + 1
+    } ${type}</div>
+        <div class="movements__value">${mov}€</div>
+      </div>
+    `;
 
-  // inserting html element
-  containerMovements.insertAdjacentHTML('afterbegin', html);
-});
+    containerMovements.insertAdjacentHTML('afterbegin', html);
+  });
+};
 
 // displaying the 'in' 'out' 'intrest' parts in the footer
-const calcDisplaySummary = function (movements) {
+const calcDisplaySummary = function (account) {
+  const movements = account.movements;
+  const interestRate = account.interestRate;
   // incomes
   const incomes = movements
     .filter(mov => mov > 0)
@@ -96,7 +97,7 @@ const calcDisplaySummary = function (movements) {
 
   const intrest = movements
     .filter(deposit => deposit > 0)
-    .map(deposit => (deposit * 1.2) / 100)
+    .map(deposit => (deposit * interestRate) / 100)
     .filter((int, i, arr) => {
       return int >= 1;
     })
@@ -104,8 +105,6 @@ const calcDisplaySummary = function (movements) {
 
   labelSumInterest.textContent = intrest;
 };
-
-calcDisplaySummary(account1.movements);
 
 // extracts the first letter of each word in a name
 const createUsernames = function (accs) {
@@ -126,16 +125,43 @@ const calcPrintBalance = function (movs) {
     .reduce((acc, mov) => acc + mov, 0);
   labelBalance.textContent = `${balance}€`;
 };
-// console.log(calcPrintBalance(account2.movements));
+calcPrintBalance(account1.movements);
+
+// event handlers
+let currentAccount;
+
+// login button
+btnLogin.addEventListener('click', function (e) {
+  e.preventDefault(); // does not refresh
+  currentAccount = accounts.find(
+    account => account.username === inputLoginUsername.value
+  );
+
+  if (currentAccount?.pin === Number(inputLoginPin.value)) {
+    // Display UI and Message
+    labelWelcome.textContent = `Welcome Back ${
+      currentAccount.owner.split(' ')[0]
+    }`;
+    containerApp.style.opacity = 1;
+
+    // Clear input fields
+    inputLoginPin.value = '';
+    inputLoginUsername.value = '';
+    inputLoginPin.blur(); // the input loses its focus
+
+    // Display Movements
+    displayMovements(currentAccount.movements);
+
+    // Display Balance
+    calcPrintBalance(currentAccount.movements);
+
+    // Display Summary
+    calcDisplaySummary(currentAccount);
+  }
+});
 
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // LECTURES
 
-// returns the first element that meets the condition
-const firstWithdrawal = account1.movements.find(curr => curr < 0);
-console.log(firstWithdrawal);
-
-const account = accounts.find(account => account.owner === 'Jonas Schmedtmann');
-console.log(account);
 /////////////////////////////////////////////////

@@ -119,13 +119,24 @@ const createUsernames = function (accs) {
 createUsernames(accounts);
 
 // calculate movements and print them in the top right corner
-const calcPrintBalance = function (movs) {
-  const balance = movs
+const calcPrintBalance = function (acc) {
+  acc.balance = acc.movements
     .filter(mov => mov > 0)
     .reduce((acc, mov) => acc + mov, 0);
-  labelBalance.textContent = `${balance}€`;
+  labelBalance.textContent = `${acc.balance}€`;
 };
-calcPrintBalance(account1.movements);
+
+// Updating ui after password is correct
+const updateUI = function (acc) {
+  // Display Movements
+  displayMovements(acc.movements);
+
+  // Display Balance
+  calcPrintBalance(acc);
+
+  // Display Summary
+  calcDisplaySummary(acc);
+};
 
 // event handlers
 let currentAccount;
@@ -149,14 +160,35 @@ btnLogin.addEventListener('click', function (e) {
     inputLoginUsername.value = '';
     inputLoginPin.blur(); // the input loses its focus
 
-    // Display Movements
-    displayMovements(currentAccount.movements);
+    // Update UI
+    updateUI(currentAccount);
+  }
+});
 
-    // Display Balance
-    calcPrintBalance(currentAccount.movements);
+// Transferring money
+btnTransfer.addEventListener('click', function (e) {
+  e.preventDefault();
 
-    // Display Summary
-    calcDisplaySummary(currentAccount);
+  const amount = Number(inputTransferAmount.value);
+
+  const recieverAccount = accounts.find(
+    account => account.username === inputTransferTo.value
+  );
+
+  inputTransferTo.value = inputTransferAmount.value = '';
+
+  if (
+    amount > 0 &&
+    currentAccount.balance >= amount &&
+    recieverAccount && // if it exists
+    recieverAccount?.username !== currentAccount.username // if it exists the reciver username shouldnt be the same as sender
+  ) {
+    // Pushing the ammount the the account's movements
+    recieverAccount.movements.push(amount);
+    currentAccount.movements.push(-amount);
+
+    // Update UI
+    updateUI(currentAccount);
   }
 });
 

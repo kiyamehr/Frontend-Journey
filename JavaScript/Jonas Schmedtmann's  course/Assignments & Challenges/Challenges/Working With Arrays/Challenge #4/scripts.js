@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 // Julia and Kate are still studying dogs, and this time they are studying if dogs are
 // eating too much or too little.
@@ -41,60 +41,43 @@
 // recommended portion.
 
 const dogs = [
-  { weight: 22, curFood: 250, owners: ["Alice", "Bob"] },
-  { weight: 8, curFood: 200, owners: ["Matilda"] },
-  { weight: 13, curFood: 275, owners: ["Sarah", "John"] },
-  { weight: 32, curFood: 340, owners: ["Michael"] },
+  { weight: 22, curFood: 250, owners: ['Alice', 'Bob'] },
+  { weight: 8, curFood: 200, owners: ['Matilda'] },
+  { weight: 13, curFood: 275, owners: ['Sarah', 'John'] },
+  { weight: 32, curFood: 340, owners: ['Michael'] },
 ];
 
-dogs.forEach(function (dog) {
-  // Calculating recommended food for each dog
-  dog.recommendedFood = Math.trunc(dog.weight ** 0.75 * 28);
-});
+dogs.map(dog => (dog.recommendedFood = Math.trunc(dog.weight ** 0.75 * 28)));
 
-const sarahDog = dogs.find(
-  (dog, i) => dog.owners[0] || dog.owners[1] === "Sarah"
-);
-
-console.log(
-  sarahDog.recommendedFood < sarahDog.curFood
-    ? "Eating Too much"
-    : "Eating Too low"
-);
-
-// console.log(sarahDog);
-
-// 3
-const ownersEatTooMuch = dogs.filter(
-  (dog) => dog.recommendedFood > dog.curFood
-);
+const ownersEatTooMuch = dogs.filter(dog => dog.recommendedFood > dog.curFood);
 const ownersEatTooLittle = dogs.filter(
-  (dog) => dog.recommendedFood < dog.curFood
+  dog => dog.recommendedFood < dog.curFood
 );
 
 // 4
 console.log(
   `${ownersEatTooMuch
-    .map((dog) => dog.owners.join(" and ", " "))
-    .join(" and ", " ")} Dogs eat too much`
+    .map(dog => dog.owners.join(' and ', ' '))
+    .join(' and ', ' ')} Dogs eat too much`
 );
 
 console.log(
   `${ownersEatTooLittle
-    .map((dog) => dog.owners.join(" and ", " "))
-    .join(" and ", " ")} Dogs eat too little`
+    .map(dog => dog.owners.join(' and ', ' '))
+    .join(' and ', ' ')} Dogs eat too little`
 );
 
 const okFood = dogs.filter(
-  ((dog) => dog.recommendedFood < dog.curFood) &&
-    ((dog) => dog.recommendedFood > dog.curFood)
+  (dog => dog.recommendedFood < dog.curFood) &&
+    (dog => dog.recommendedFood > dog.curFood)
 );
 
 console.log(
-  `${okFood
-    .map((dog) => dog.owners.join(" and ", ""))
-    .join(" and ", "")} Eat Ok`
+  `${okFood.map(dog => dog.owners.join(' and ', '')).join(' and ', '')} Eat Ok`
 );
 
 const dogsCopy = [...dogs];
-console.log(dogsCopy.map((dog) => dog.curFood).sort());
+console.log(dogsCopy.map(dog => dog.curFood).sort());
+
+const sarahDog = dogs.find(dog => dog.owners.includes('Sarah'));
+console.log(sarahDog);

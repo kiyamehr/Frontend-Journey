@@ -1,0 +1,30 @@
+@import "tailwindcss";
+
+.text-white {
+  color: #ffffff;
+}
+
+.box-card-design {
+  background-color: #18181b;
+  border: 2px solid #27272a;
+}
+
+/* when the button is set as active */
+.active-button-status {
+  background-color: #e7000b;
+}
+
+/* when habit checkbox is clicked */
+.checked-button-habit {
+  background-color: #e7000b;
+  border-color: #fb2c36;
+}
+
+.checked-box-habit {
+  background-color: #460809;
+  border: 2px solid #e7000b;
+}
+
+.checked-box-fire-color {
+  color: #ff6900;
+}

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Goggins Habit Tracker</title>
+    <link rel="stylesheet" href="src/style.css" />
+
+    <!-- font font-awesome -->
+    <!-- In your <head> -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="./dist/style.css">
+  </head>
+  <body class="relative font-sans w-screen h-screen bg-zinc-950 text-white overflow-x-hidden">
+    <header
+      class="border-b-3 border-[#e7000b] bg-linear-to-r from-[#82181a] to-blue-[#09090b] text-center py-6"
+    >
+      <h1 id="title" class="text-2xl">Goggins Habit Tracker</h1>
+      <!--upper case -->
+      <q
+        id="quote"
+        class="text-xl italic text-[#fb2c36]"
+        cite="https://davidgoggins.com/"
+        >Whose Gonna Carry The Boats!</q
+      >
+    </header>
+
+    <main class=" lg:w-5/6 lg:flex flex-wrap lg:justify-center lg:mx-auto mx-3 ">
+      <!-- Tracking section  -->
+      <section
+        id="tracking-box"
+        class="grid sm:grid-cols-4 items-center justify-center grid-cols-2 my-8 gap-2 lg:gap-5 w-full"
+      >
+        <div
+          class="w-full box-card-design py-4 px-5 rounded-sm"
+        >
+          <p class="text-base text-[#71717b]">
+            <i class="fa fa-bullseye text-[#f92b35]"> </i> TODAY
+          </p>
+          <p id="completed-today-decimal" class="text-3xl text-white my-2">2/3</p>
+          <p id="completed-today-percentage" class="text-sm text-[#52525c]">67% Completed</p>
+        </div>
+  
+        <div
+          
+          class="w-full box-card-design py-4 px-5 rounded-sm"
+        >
+          <p class="text-base text-[#71717b]">
+            <i class="fa fa-arrow-trend-up text-[#ff6900]"></i> BEST STREAK
+          </p>
+          <p id="best-streak" class="text-3xl text-white my-2">1</p>
+          <p class="text-sm text-[#52525c]">Days in a row</p>
+        </div>
+  
+        <div
+          class="w-full box-card-design py-4 px-5 rounded-sm"
+        >
+          <p class="text-base text-[#71717b]">
+            <i class="fa fa-check-double text-[#00c54e]"></i> TOTAL REPS
+          </p>
+          <p id="total-reps" class="text-3xl text-white my-2">2</p>
+          <p class="text-sm text-[#52525c]"><span>All Time</p>
+        </div>
+  
+        <div
+          id="habits"
+          class="w-full box-card-design py-4 px-5 rounded-sm"
+        >
+          <p class="text-base text-[#71717b]">
+            <i class="fa fa-medal text-[#f0b100]"></i> Habits
+          </p>
+          <p id="total-habits" class="text-3xl text-white my-2">3</p>
+          <p class="text-sm text-[#52525c]">Active missions</p>
+        </div>
+      </section>
+      <br>
+
+
+      <!-- habits status -->
+       <section id="habits-status" class="grid grid-cols-3 gap-3 lg:gap-5  w-full">
+        <button id="status-all" class="active-button-status text-white cursor-pointer hover:border-red-600! transition duration-300 w-full box-card-design py-4 px-5 rounded-sm ">All (3)</button>
+        <button id="status-completed" class="text-white cursor-pointer hover:border-red-600! transition duration-300 w-full box-card-design py-4 px-5 rounded-sm">Completed (2)</button>
+        <button id="status-missed" class="text-white cursor-pointer hover:border-red-600! transition duration-300 w-full box-card-design py-4 px-5 rounded-sm">Missed (1)</button>
+       </section>
+
+       <!-- add habit button  -->
+       <section class="w-full my-8">
+        <button id="open-add-habit-modal" class="w-full bg-red-600 hover:bg-red-800 cursor-pointer transition duration-300 text-white py-3 rounded-sm"><i class="fa fa-plus"></i>&nbsp;&nbsp; ADD NEW HABIT</button>
+       </section>
+
+       <!-- Habits  -->
+       <section id="habits" class="w-full">
+         <ul id="habits-ul">
+            <li id="no-habit-message" class="hidden relative flex mb-2 items-center justify-center rounded-sm gap-4 py-7 bg-[#18181b] border-2 border-[#27272a] transition duration-300">
+     
+              <p id="no-habit-message-text" class="text-2xl text-[#71717b]">No habits yet. Add one and get after it!</p>
+              
+            </li>
+          </ul>
+        </section>
+
+
+        
+      </main>
+      
+      <!-- add habit modal -->
+
+      <!-- overlay -->
+      <div id="add-habit-overlay" class="opacity-90 hidden fixed top-0 w-screen h-screen bg-[#09090b] z-5"></div>
+
+      <!-- add habit -->
+      <div id="add-habit-modal" class=" hidden flex items-center justify-center z-10 top-0 fixed w-screen h-screen">
+        
+        <!-- add habit card  -->
+        <div class="py-4 px-3 bg-[#18181b] border-2 border-red-600 w-9/12 lg:w-2/5 min-h-6/12 lg:h-1/2 rounded-sm">
+          <section class="flex items-center w-full ">
+            <h1 class="text-2xl">ADD NEW HABIT</h1>
+            <!-- close button  -->
+            <i id="modal-close-icon" class="fa fa-x ml-auto mt-1 mr-4 text-[#71717b] hover:text-white transition duration-300 "></i>
+          </section>
+
+          <p class="text-sm text-[#71717b] my-4">Habit Name</p>
+
+          <!-- input cancel add habit form  -->
+          <form id="add-habit-modal-form" class="" action="">
+            <!-- add habit input -->
+            <input id="add-habit-modal-input" class="w-full bg-[#09090b] border-2 border-[#3f3f46] focus:border-red-600 placeholder-[#3f3f46] text-white py-2 px-3 outline-none rounded-sm" type="text" placeholder="e.g., Run 5 miles, Read 30 minutes...">
+  
+            <!-- buttons -->
+             <section class="grid grid-cols-2 my-4 gap-4">
+              <!-- cancel -->
+              <button id="add-habit-modal-cancel" class="bg-neutral-800 hover:bg-neutral-700 border-2 border-[#3f3f46] min-w-full mx-auto px-2 py-3 rounded-sm transition duration-300 cursor-pointer">CANCEL</button>
+  
+              <!-- add habit button  -->
+              <button id="add-habit-modal-add-habit" type="submit" class="bg-red-600 hover:bg-red-700 border-2 border-red-500 min-w-full mx-auto px-2 py-3 rounded-sm transition duration-300 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-red-600" disabled="">ADD HABIT</button>
+             </section>
+
+             <!-- modal quote  -->
+             <section class="text-center w-full mt-7">
+               <q class="text-sm text-[#71717b] italic lg:mt-10" cite="https://davidgoggins.com/">Don't stop when you're tired, stop when you're done</q>
+             </section>
+
+          </form>
+
+        </div>
+
+      </div>
+
+      <script src="src/main.js"></script>
+  </body>
+</html>

@@ -81,7 +81,7 @@ const inputClosePin = document.querySelector('.form__input--pin');
 /////////////////////////////////////////////////
 // Functions
 
-const formatMovementsDate = function (date) {
+const formatMovementsDate = function (date, locale) {
   const calcDaysPassed = (date1, date2) =>
     Math.round(Math.abs(date2 - date1) / (24 * 60 * 60 * 1000));
 
@@ -91,10 +91,13 @@ const formatMovementsDate = function (date) {
   if (daysPassed === 1) return 'Yesterday';
   if (daysPassed <= 7) return `${daysPassed} days ago`;
   else {
-    const day = `${date.getDate()}`.padStart(2, 0);
-    const month = `${date.getMonth() + 1}`.padStart(2, 0);
-    const year = date.getFullYear();
-    return `${day}/${month}/${year}`;
+    // const day = `${date.getDate()}`.padStart(2, 0);
+    // const month = `${date.getMonth() + 1}`.padStart(2, 0);
+    // const year = date.getFullYear();
+    // return `${day}/${month}/${year}`;
+
+    //? formatting time to local time zones
+    return new Intl.DateTimeFormat(locale).format(date);
   }
 };
 
@@ -112,7 +115,7 @@ const displayMovements = function (acc, sort = false) {
     const { movements, movementsDate } = obj;
 
     const date = new Date(movementsDate);
-    const displayDate = formatMovementsDate(date);
+    const displayDate = formatMovementsDate(date, acc.locale);
 
     const type = movements > 0 ? 'deposit' : 'withdrawal';
 
@@ -188,17 +191,6 @@ currentAccount = account1;
 updateUI(currentAccount);
 containerApp.style.opacity = '100';
 
-const now = new Date();
-// if the number was 1 digit then it must be shown like 01 not 1
-const day = `${now.getDate()}`.padStart(2, 0);
-// because months arezero based in js we add + 1
-const month = `${now.getMonth() + 1}`.padStart(2, 0);
-const year = now.getFullYear();
-const hour = `${now.getHours()}`.padStart(2, 0);
-const minutes = `${now.getMinutes()}`.padStart(2, 0);
-
-labelDate.textContent = `${day}/${month}/${year}, ${hour}:${minutes}`;
-
 btnLogin.addEventListener('click', function (e) {
   // Prevent form from submitting
   e.preventDefault();
@@ -215,13 +207,30 @@ btnLogin.addEventListener('click', function (e) {
     }`;
     containerApp.style.opacity = 100;
 
+    // const now = new Date();
+    // const day = `${now.getDate()}`.padStart(2, 0);
+    // const month = `${now.getMonth() + 1}`.padStart(2, 0);
+    // const year = now.getFullYear();
+    // const hour = `${now.getHours()}`.padStart(2, 0);
+    // const minutes = `${now.getMinutes()}`.padStart(2, 0);
+    // labelDate.textContent = `${day}/${month}/${year}, ${hour}:${minutes}`;
+
     const now = new Date();
-    const day = `${now.getDate()}`.padStart(2, 0);
-    const month = `${now.getMonth() + 1}`.padStart(2, 0);
-    const year = now.getFullYear();
-    const hour = `${now.getHours()}`.padStart(2, 0);
-    const minutes = `${now.getMinutes()}`.padStart(2, 0);
-    labelDate.textContent = `${day}/${month}/${year}, ${hour}:${minutes}`;
+
+    const options = {
+      hour: 'numeric',
+      minute: 'numeric',
+      day: 'numeric',
+      month: 'numeric', // long
+      year: 'numeric', // 2-digit
+      // weekday: 'long', // short , narrow
+    };
+
+    const locale = currentAccount.locale;
+
+    labelDate.textContent = new Intl.DateTimeFormat(locale, options).format(
+      now
+    );
 
     // Clear input fields
     inputLoginUsername.value = inputLoginPin.value = '';

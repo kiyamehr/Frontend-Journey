@@ -231,11 +231,13 @@ const startLogOutTimer = function () {
   };
 
   // Set time to 5 minutes
-  let time = 10;
+  let time = 120;
+
+  // Call the timer every second
   tick();
   const timer = setInterval(tick, 1000);
 
-  // Call the timer every second
+  return timer;
 };
 
 ///////////////////////////////////////

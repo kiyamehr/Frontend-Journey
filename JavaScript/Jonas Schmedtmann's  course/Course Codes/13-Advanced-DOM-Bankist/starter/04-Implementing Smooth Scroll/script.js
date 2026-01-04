@@ -34,56 +34,38 @@ document.addEventListener('keydown', function (e) {
 ///////////////////////////////////////
 ///////////////////////////////////////
 ///////////////////////////////////////
-const header = document.querySelector('.header');
 
-const message = document.createElement('div');
-message.classList.add('cookie-message');
+const btnScrollTo = document.querySelector('.btn--scroll-to');
+const section1 = document.querySelector('#section--1');
 
-message.innerHTML =
-  'We use cookied for improved functionality and analytics. <button class="btn btn--close-cookie">Got it!</button>';
+btnScrollTo.addEventListener('click', function (e) {
+  const s1coords = section1.getBoundingClientRect();
+  console.log(s1coords);
 
-header.append(message);
+  console.log(e.target.getBoundingClientRect());
 
-document
-  .querySelector('.btn--close-cookie')
-  .addEventListener('click', function () {
-    // message.remove();
+  console.log('Current scroll (X/Y)', window.scrollX, window.scrollY);
 
-    message.parentElement.removeChild(message);
-  });
+  console.log(
+    'height width viewport',
+    document.documentElement.clientHeight,
+    document.documentElement.clientWidth
+  );
 
-//* Styles
+  // Scrolling
+  //? Old School Way (Supported in old browsers)
+  // window.scrollTo(
+  //   s1coords.top + window.scrollY,
+  //   s1coords.left + window.scrollX
+  // );
 
-console.log(getComputedStyle(message).color);
-console.log(getComputedStyle(message).height);
+  //? for Smooth Scrolling
+  // window.scrollTo({
+  //   left: s1coords.top + window.scrollY,
+  //   right: s1coords.left + window.scrollX,
+  //   behavior: 'smooth',
+  // });
 
-message.style.height =
-  Number.parseFloat(getComputedStyle(message).height) + 30 + 'px';
-
-// document.documentElement.style.setProperty();
-
-document.documentElement.style.setProperty('--color-primary', 'orangered');
-
-// Attributes
-const logo = document.querySelector('.nav__logo');
-
-console.log(logo.alt);
-console.log(logo.src);
-
-// Non-Standard
-console.log(logo.designer);
-
-console.log(logo.getAttribute('designer')); // get none standard attributes
-
-logo.setAttribute('company', 'Bankist');
-
-console.log(logo.src);
-console.log(logo.getAttribute('src'));
-
-const link = document.querySelector('.nav__link--btn');
-
-console.log(link.href);
-console.log(link.getAttribute('href'));
-
-// Data Attribute
-console.log(logo.dataset.versionNumber);
+  //? New Wau (Not supported in older browsers)
+  section1.scrollIntoView({ behavior: 'smooth' });
+});

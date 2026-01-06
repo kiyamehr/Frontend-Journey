@@ -66,41 +66,31 @@ document.querySelector('.nav__links').addEventListener('click', function (e) {
   }
 });
 
-///////////////////////////////////////
-///////////////////////////////////////
-///////////////////////////////////////
+// Tabbed component
+const tabs = document.querySelectorAll('.operations__tab');
+const tabsContainer = document.querySelector('.operations__tab-container');
+const tabsContent = document.querySelectorAll('.operations__content');
 
-// Lectures
+tabsContainer.addEventListener('click', function (e) {
+  const clicked = e.target.closest('.operations__tab');
 
-// Going downwards : child
+  // Gaurd Clause
+  if (!clicked) return;
 
-const h1 = document.querySelector('h1');
+  // old way of gaurd clause
+  // if (clicked) {
+  // clicked.classList.add('operations__tab--active');
+  // }
 
-console.log(h1);
-console.log(h1.childNodes); // Returns Everything in el
-console.log(h1.children); // returns element children in parent
+  // Active Tab
+  tabs.forEach(t => {
+    t.classList.remove('operations__tab--active');
+  });
+  tabsContent.forEach(c => c.classList.remove('operations__content--active'));
 
-h1.firstElementChild.style.color = 'crimson';
-h1.lastElementChild.style.color = 'orangered';
+  clicked.classList.add('operations__tab--active');
 
-// Going Upward: parent
-
-console.log(h1.parentNode);
-console.log(h1.parentElement);
-
-console.log(h1.closest('.header'));
-
-h1.closest('.header').style.backgroundColor = 'var(--color-secondary-darker)';
-h1.closest('h1').style.backgroundColor = 'var(--color-primary)';
-
-// Going sideway: siblings
-
-console.log(h1.previousElementSibling);
-console.log(h1.nextElementSibling);
-
-console.log(h1.parentElement.children);
-
-// cause html collection is an iterable we can spread it
-[...h1.parentElement.children].forEach(el => {
-  if (el !== h1) el.style.transform = 'scale(0.5)';
+  document
+    .querySelector(`.operations__content--${clicked.dataset.tab}`)
+    .classList.add('operations__content--active');
 });

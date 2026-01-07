@@ -117,6 +117,8 @@ const handleOpacity = function (e) {
   }
 };
 
+// Implemeting Sticky Nav
+
 const navHeight = nav.getBoundingClientRect().height;
 
 const stickyNav = entries => {
@@ -127,7 +129,6 @@ const stickyNav = entries => {
   else nav.classList.remove('sticky');
 };
 
-// Implemeting Sticky Nav
 const observer = new IntersectionObserver(stickyNav, {
   root: null,
   threshold: 0, // When zero percent of header is visible start

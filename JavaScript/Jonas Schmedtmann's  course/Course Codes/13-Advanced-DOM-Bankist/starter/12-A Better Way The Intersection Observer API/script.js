@@ -13,6 +13,8 @@ const tabsContent = document.querySelectorAll('.operations__content');
 
 const nav = document.querySelector('.nav');
 
+const header = document.querySelector('.header');
+
 ///////////////////////////////////////
 // Modal window
 
@@ -115,16 +117,21 @@ const handleOpacity = function (e) {
   }
 };
 
-// Passing "Arguments" into handler
-console.log(nav);
-nav.addEventListener('mouseover', handleOpacity.bind(0.5));
+const navHeight = nav.getBoundingClientRect().height;
 
-nav.addEventListener('mouseout', handleOpacity.bind(1));
-
-// Sticky Navigation
-const initialCoords = section1.getBoundingClientRect();
-
-window.addEventListener('scroll', function (e) {
-  if (this.window.scrollY >= initialCoords.top) nav.classList.add('sticky');
+const stickyNav = entries => {
+  // destrucre since its only 1 member
+  const [entry] = entries;
+  // if it stopped observing then
+  if (!entry.isIntersecting) nav.classList.add('sticky');
   else nav.classList.remove('sticky');
+};
+
+// Implemeting Sticky Nav
+const observer = new IntersectionObserver(stickyNav, {
+  root: null,
+  threshold: 0, // When zero percent of header is visible start
+  // Changing when The header actually end, so it matches the width of the navigation bar
+  rootMargin: `-${navHeight}px`,
 });
+observer.observe(header);

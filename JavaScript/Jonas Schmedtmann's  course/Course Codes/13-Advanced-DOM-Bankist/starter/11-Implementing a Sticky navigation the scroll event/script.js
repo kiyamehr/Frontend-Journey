@@ -120,3 +120,11 @@ console.log(nav);
 nav.addEventListener('mouseover', handleOpacity.bind(0.5));
 
 nav.addEventListener('mouseout', handleOpacity.bind(1));
+
+// Sticky Navigation
+const initialCoords = section1.getBoundingClientRect();
+
+window.addEventListener('scroll', function (e) {
+  if (this.window.scrollY >= initialCoords.top) nav.classList.add('sticky');
+  else nav.classList.remove('sticky');
+});

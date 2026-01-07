@@ -141,13 +141,13 @@ headerObserver.observe(header);
 // Reveal on Scroll
 const sections = document.querySelectorAll('.section');
 const revealSeciton = function (entries, observer) {
-  const [entry] = entries;
+  entries.forEach(entry => {
+    // Gaurd Clause
+    if (!entry.isIntersecting) return;
 
-  // Gaurd Clause
-  if (!entry.isIntersecting) return;
-
-  entry.target.classList.remove('section--hidden');
-  observer.unobserve(entry.target);
+    entry.target.classList.remove('section--hidden');
+    observer.unobserve(entry.target);
+  });
 };
 
 const secitonObserver = new IntersectionObserver(revealSeciton, {

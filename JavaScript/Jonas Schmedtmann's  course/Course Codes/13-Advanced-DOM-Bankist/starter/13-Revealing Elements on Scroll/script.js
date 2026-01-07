@@ -129,10 +129,33 @@ const stickyNav = entries => {
   else nav.classList.remove('sticky');
 };
 
-const observer = new IntersectionObserver(stickyNav, {
+const headerObserver = new IntersectionObserver(stickyNav, {
   root: null,
   threshold: 0, // When zero percent of header is visible start
+
   // Changing when The header actually end, so it matches the width of the navigation bar
   rootMargin: `-${navHeight}px`,
 });
-observer.observe(header);
+headerObserver.observe(header);
+
+// Reveal on Scroll
+const sections = document.querySelectorAll('.section');
+const revealSeciton = function (entries, observer) {
+  const [entry] = entries;
+
+  // Gaurd Clause
+  if (!entry.isIntersecting) return;
+
+  entry.target.classList.remove('section--hidden');
+  observer.unobserve(entry.target);
+};
+
+const secitonObserver = new IntersectionObserver(revealSeciton, {
+  root: null,
+  threshold: 0.15,
+});
+
+sections.forEach(section => {
+  secitonObserver.observe(section);
+  section.classList.add('section--hidden');
+});

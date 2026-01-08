@@ -74,6 +74,24 @@ document.querySelector('.nav__links').addEventListener('click', function (e) {
   }
 });
 
+const handleHover = function (e) {
+  if (e.target.classList.contains('nav__link')) {
+    const hovered = e.target;
+    const siblings = hovered.closest('.nav').querySelectorAll('.nav__link');
+    const logo = document.querySelector('img');
+
+    siblings.forEach(s => {
+      if (s !== hovered) s.style.opacity = this;
+    });
+    logo.style.opacity = this;
+  }
+};
+
+// Hover Animation
+nav.addEventListener('mouseover', handleHover.bind(0.5));
+
+nav.addEventListener('mouseout', handleHover.bind(1));
+
 // Tabbed component
 
 tabsContainer.addEventListener('click', function (e) {

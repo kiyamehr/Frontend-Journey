@@ -20,20 +20,16 @@ Person.prototype.calcAge = function () {
 
 const kiamehr = new Person('kiamehr', 18);
 
-kiamehr.calcAge();
+console.dir(Person.prototype.constructor);
 
-// To check an objects prototypes
-console.log(kiamehr.__proto__);
-console.log(kiamehr.__proto__ === Person.prototype);
-console.log(Person.prototype.isPrototypeOf(kiamehr));
-console.log(Person.prototype.isPrototypeOf(Person));
+const arr = [5, 6, 5, 9, 6, 9];
+console.log(arr.__proto__); // Shows All the method prototype on Arryas
+console.log(arr.__proto__ === Array.prototype);
+console.log(arr.__proto__.__proto__);
+console.log(arr.__proto__.__proto__.__proto__);
 
-// more honest name since its not a prototype of the class itself: \n
-//? .prototypeOfLinkedObjects
-
-// defining attribute using prototypes
-Person.prototype.species = 'Homo Sapiens';
-
-console.log(kiamehr.species);
-
-kiamehr.hasOwnProperty('firstName');
+// Adding new methods to a class like Array
+Array.prototype.unique = function () {
+  return [...new Set(this)];
+};
+console.log(arr.unique());

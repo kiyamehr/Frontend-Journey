@@ -39,29 +39,14 @@ class PersonCl {
 
 const kia = new PersonCl('Kiamehr Moradi', 2007);
 
-// Setters and Getters on Objects
-const kiaAccount = {
-  firstName: 'Kiamehr',
-  movements: [20, 100, 300, 500, 42],
-
-  // when you need to get something out of an array with some calculations before
-  get latest() {
-    return this.movements.slice(-1).pop();
-  },
-
-  // when you want to set something to an object
-  set latest(mov) {
-    this.movements.push(mov);
-  },
+PersonCl.hey = function () {
+  console.log('Hey There!');
+  // the entire constructor
+  console.log(this);
 };
 
-console.log(kiaAccount.latest);
+// Only for the parrent and not for the inctences
+PersonCl.hey();
 
-kiaAccount.latest = 50;
-console.log(kiaAccount.movements);
-
-// using get and set in classes
-console.log(kia.age);
-
-// kia.fullname = 'Kiamehr';
-console.log(kia.fullName);
+// Does not get Inherited!
+// kia.hey(); //! error

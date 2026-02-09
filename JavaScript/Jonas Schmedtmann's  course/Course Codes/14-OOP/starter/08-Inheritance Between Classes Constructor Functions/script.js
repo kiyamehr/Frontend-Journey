@@ -16,7 +16,7 @@ const Student = function (firstName, birthYear, course) {
 
 // If we do this after line 20 then object.create would overwrite \n
 // the intruduce prototype, cause object.create creates an empty object.
-Student.prototype = Object.create(Person.prototype);
+Student.prototype = Object.create(Person.prototype); //? Linking the Prototypes
 
 Student.prototype.introduce = function () {
   return `Hello, I'm ${this.firstName}, and i am studying ${this.course}`;

@@ -1,49 +1,30 @@
 'use strict';
 
-class PersonCl {
-  constructor(firstName, birthYear) {
+const PersonProto = {
+  calcAge() {
+    return 2026 - this.birthYear;
+  },
+
+  init(firstName, birthYear) {
     this.firstName = firstName;
     this.birthYear = birthYear;
-  }
+  },
+};
 
-  // Methods will be added to .prototype property
-  calcAge() {
-    return 2025 - this.birthYear;
-  }
+const kia = Object.create(PersonProto);
 
-  greet() {
-    return `Hello ${this.firstName}`;
-  }
+const StudentProto = Object.create(PersonProto);
 
-  get age() {
-    return 2006 - this.birthYear;
-  }
+StudentProto.init = function (firstName, birthYear, course) {
+  PersonProto.init.call(this, firstName, birthYear);
+  this.course = course;
+};
+mmd.introduce = function () {
+  return `Hi im ${this.firstName}`;
+};
 
-  // Static Method
-  static hey() {
-    return 'Hello There';
-  }
-}
+const mmd = Object.create(StudentProto);
 
-// 'extends' syncs the prototypes automatically
-class StudentCl extends PersonCl {
-  constructor(firstName, birthYear, course) {
-    // Allways needs to happen first!
-    super(firstName, birthYear); //? Sets the 'this' key word
-    this.course = course;
-  }
-
-  introduce() {
-    return `Hey There I'm ${this.firstName} and im Studying ${this.course}`;
-  }
-
-  // Overwriting and inherited function
-  // calcAge() {
-  //   return 'I was Overwritten :D';
-  // }
-}
-
-const kia = new StudentCl('Kiamehr', 2007, 'Computer Engineering');
-
-console.log(kia.introduce());
-console.log(kia.calcAge());
+mmd.init('Mmd', 2005, 'Accountant');
+console.log(mmd.calcAge());
+console.log(mmd.introduce());

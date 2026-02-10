@@ -19,11 +19,11 @@ StudentProto.init = function (firstName, birthYear, course) {
   PersonProto.init.call(this, firstName, birthYear);
   this.course = course;
 };
+
+const mmd = Object.create(StudentProto);
 mmd.introduce = function () {
   return `Hi im ${this.firstName}`;
 };
-
-const mmd = Object.create(StudentProto);
 
 mmd.init('Mmd', 2005, 'Accountant');
 console.log(mmd.calcAge());

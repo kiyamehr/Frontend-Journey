@@ -24,23 +24,32 @@ if (navigator.geolocation) {
       //* Leaflet Map
 
       const coords = [latitude, longitude];
-      console.log(coords);
       const map = L.map('map').setView(coords, 15);
 
-      // 'L' is a funciton that leaflet gives us that we can use its methods on it
-
-      // tileLayer is the way the map is displayed
       L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution:
           '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
       }).addTo(map);
 
-      L.marker(coords)
-        .addTo(map)
-        .bindPopup('A pretty CSS popup.<br> Easily customizable.')
-        .openPopup();
+      //? Leaflet event Listener on map
+      map.on('click', function (mapEvent) {
+        const { lat, lng } = mapEvent.latlng;
+        L.marker([lat, lng], { riseOnHover: true })
+          .addTo(map)
+          .bindPopup(
+            L.popup({
+              maxwidth: 250,
+              minWidth: 100,
+              autoClose: false,
+              closeOnClick: false,
+              className: 'running-popup',
+            }),
+          )
+          .setPopupContent('Workout')
+          .openPopup();
+      });
 
-      console.log(`https://www.google.com/maps/@${longitude},${latitude}`);
+      // console.log(`https://www.google.com/maps/@${longitude},${latitude}`);
     },
     function () {
       //? Second callback function: when fail (could not get the location)

@@ -14,74 +14,56 @@ const inputElevation = document.querySelector('.form__input--elevation');
 
 // Global Variables
 let map, mapEvent;
+class App {
+  #map;
+  #mapEvent;
 
-// If the user's browser supported geolocation (old browsers don't)
-if (navigator.geolocation) {
-  // getting user's current location
-  navigator.geolocation.getCurrentPosition(
-    function (position) {
-      //? First callback function: when success (could get the location)
+  constructor() {
+    //? The constructor function gets launched when the page loads  \n
+    //? so when the page loads the loadmap method will get launched too so we dont have to call it outside of the class
+    this._loadMap();
+  }
 
-      const { latitude } = position.coords;
-      const { longitude } = position.coords;
+  _loadMap() {
+    if (navigator.geolocation) {
+      // getting user's current location
+      navigator.geolocation.getCurrentPosition(
+        this._getPorision.bind(this),
+        function () {
+          //? Second callback function: when fail (could not get the location)
+          alert('Could Not Get Your Location!');
+        },
+      );
+    }
+  }
 
-      //* Leaflet Map
+  _getPorision(position) {
+    //! In callback functions 'this' is undefined!
+    // console.log(this);
 
-      const coords = [latitude, longitude];
-      map = L.map('map').setView(coords, 15);
+    //? First callback function: when success (could get the location)
 
-      L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution:
-          '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-      }).addTo(map);
+    const { latitude } = position.coords;
+    const { longitude } = position.coords;
 
-      //? Leaflet event Listener on map
-      map.on('click', function (mapE) {
-        // Giving the event to a global variable
-        mapEvent = mapE;
-        form.classList.remove('hidden');
-        inputDistance.focus();
-      });
+    //* Leaflet Map
 
-      // console.log(`https://www.google.com/maps/@${longitude},${latitude}`);
-    },
-    function () {
-      //? Second callback function: when fail (could not get the location)
-      alert('Could Not Get Your Location!');
-    },
-  );
+    const coords = [latitude, longitude];
+    this.#map = L.map('map').setView(coords, 15);
+
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution:
+        '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+    }).addTo(this.#map);
+
+    //? Leaflet event Listener on map
+    this.#map.on('click', function (mapE) {
+      // Giving the event to a global variable
+      this.#mapEvent = mapE;
+      form.classList.remove('hidden');
+      inputDistance.focus();
+    });
+  }
 }
 
-form.addEventListener('submit', function (e) {
-  e.preventDefault();
-
-  inputDistance.value =
-    inputCadence.value =
-    inputDuration.value =
-    inputElevation.value =
-      '';
-
-  // Displaying Map Marker
-  const { lat, lng } = mapEvent.latlng;
-  L.marker([lat, lng], { riseOnHover: true })
-    .addTo(map)
-    .bindPopup(
-      L.popup({
-        maxwidth: 250,
-        minWidth: 100,
-        autoClose: false,
-        closeOnClick: false,
-        className: 'running-popup',
-      }),
-    )
-    .setPopupContent('Workout')
-    .openPopup();
-
-  form.classList.add('hidden');
-});
-
-inputType.addEventListener('change', function () {
-  // This way allways one is hidden and one is showing
-  inputElevation.closest('.form__row').classList.toggle('form__row--hidden');
-  inputDistance.closest('.form__row').classList.toggle('form__row--hidden');
-});
+const app = new App();

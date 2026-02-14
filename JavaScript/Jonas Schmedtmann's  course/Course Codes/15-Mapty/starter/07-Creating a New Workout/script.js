@@ -51,11 +51,6 @@ class Cycling extends Workout {
   }
 }
 
-// const run = new Running([38, 45], 20, 40);
-// const cycling = new Running([38, 45], 120, 550);
-
-// console.log(run, cycling);
-
 // -------------------------------------
 // Application Architecture
 class App {
@@ -116,15 +111,48 @@ class App {
   }
 
   _newWorkout(e) {
+    //? ...inputs means get all inputs which returns an array
+    const validInputs = (...inputs) =>
+      // every checks if all the members match the given condition
+      inputs.every(inp => Number.isFinite(inp));
+
+    const allPositive = (...inputs) => inputs.every(inp => inp.value > 0);
+
     e.preventDefault();
 
-    inputDistance.value =
-      inputCadence.value =
-      inputDuration.value =
-      inputElevation.value =
-        '';
+    // Get data from form
+    const type = inputType.value;
+    const distance = inputDistance.value;
+    const duration = inputDuration.value;
 
-    // Displaying Map Marker
+    // if workout running, create running object
+    if (type === 'running') {
+      //? '+' transfer to Number
+      const cadence = +inputCadence.value;
+
+      // Check if data is valid
+      if (
+        validInputs(distance, cadence, duration) ||
+        allPositive(distance, cadence, duration)
+      )
+        return alert('Inputs have to be positive numbers'); //? If distance is not a number
+    }
+
+    // if workout cycling, create cycling object
+    if (type === 'cycling') {
+      const elevation = +inputElevation.value;
+
+      // Check if data is valid
+      if (
+        validInputs(distance, elevation, duration) ||
+        allPositive(distance, duration)
+      ) {
+        return alert('Inputs have to be positive numbers'); //? If distance is not a number
+      }
+    }
+    // Add new object to workour array
+
+    // Render workout on map as marker
     const { lat, lng } = this.#mapEvent.latlng;
     L.marker([lat, lng], { riseOnHover: true })
       .addTo(this.#map)
@@ -139,6 +167,15 @@ class App {
       )
       .setPopupContent('Workout')
       .openPopup();
+
+    // Render workout on list
+
+    // Hide form + Clear input fields
+    inputDistance.value =
+      inputCadence.value =
+      inputDuration.value =
+      inputElevation.value =
+        '';
 
     form.classList.add('hidden');
   }

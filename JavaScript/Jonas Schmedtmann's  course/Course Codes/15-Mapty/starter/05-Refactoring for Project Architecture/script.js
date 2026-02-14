@@ -22,13 +22,24 @@ class App {
     //? The constructor function gets launched when the page loads  \n
     //? so when the page loads the loadmap method will get launched too so we dont have to call it outside of the class
     this._loadMap();
+
+    // in event listener the 'this' goes to form
+    form.addEventListener('submit', this._newWorkout.bind(this));
+
+    inputType.addEventListener('change', this._toggleElevationField.bind(this));
+  }
+
+  _toggleElevationField() {
+    // This way allways one is hidden and one is showing
+    inputElevation.closest('.form__row').classList.toggle('form__row--hidden');
+    inputDistance.closest('.form__row').classList.toggle('form__row--hidden');
   }
 
   _loadMap() {
     if (navigator.geolocation) {
       // getting user's current location
       navigator.geolocation.getCurrentPosition(
-        this._getPorision.bind(this),
+        this._getPosition.bind(this),
         function () {
           //? Second callback function: when fail (could not get the location)
           alert('Could Not Get Your Location!');
@@ -37,7 +48,7 @@ class App {
     }
   }
 
-  _getPorision(position) {
+  _getPosition(position) {
     //! In callback functions 'this' is undefined!
     // console.log(this);
 
@@ -57,12 +68,42 @@ class App {
     }).addTo(this.#map);
 
     //? Leaflet event Listener on map
-    this.#map.on('click', function (mapE) {
-      // Giving the event to a global variable
-      this.#mapEvent = mapE;
-      form.classList.remove('hidden');
-      inputDistance.focus();
-    });
+    this.#map.on('click', this._showForm.bind(this));
+  }
+
+  _newWorkout(e) {
+    e.preventDefault();
+
+    inputDistance.value =
+      inputCadence.value =
+      inputDuration.value =
+      inputElevation.value =
+        '';
+
+    // Displaying Map Marker
+    const { lat, lng } = this.#mapEvent.latlng;
+    L.marker([lat, lng], { riseOnHover: true })
+      .addTo(this.#map)
+      .bindPopup(
+        L.popup({
+          maxwidth: 250,
+          minWidth: 100,
+          autoClose: false,
+          closeOnClick: false,
+          className: 'running-popup',
+        }),
+      )
+      .setPopupContent('Workout')
+      .openPopup();
+
+    form.classList.add('hidden');
+  }
+
+  _showForm(mapE) {
+    // Giving the event to a global variable
+    this.#mapEvent = mapE;
+    form.classList.remove('hidden');
+    inputDistance.focus();
   }
 }
 

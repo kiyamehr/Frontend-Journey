@@ -14,6 +14,50 @@ const inputElevation = document.querySelector('.form__input--elevation');
 
 // Global Variables
 let map, mapEvent;
+
+class Workout {
+  date = new Date();
+  id = (Date.now() + '').slice(-10);
+  constructor(coords, duration, distance) {
+    this.coords = coords; // [lat, lng]
+    this.duration = duration; // in km
+    this.distance = distance; // in min
+  }
+}
+
+class Running extends Workout {
+  constructor(coords, duration, distance) {
+    super(coords, duration, distance);
+    this.calcPace();
+  }
+
+  calcPace() {
+    // min/km
+    this.pace = this.duration / this.distance;
+    return this.pace;
+  }
+}
+
+class Cycling extends Workout {
+  constructor(coords, duration, distance) {
+    super(coords, distance, duration);
+    this.calcSpeed();
+  }
+
+  calcSpeed() {
+    // km/h
+    this.speed = this.distance / (this.duration / 60);
+    return this.speed;
+  }
+}
+
+// const run = new Running([38, 45], 20, 40);
+// const cycling = new Running([38, 45], 120, 550);
+
+// console.log(run, cycling);
+
+// -------------------------------------
+// Application Architecture
 class App {
   #map;
   #mapEvent;

@@ -88,9 +88,6 @@ class App {
   }
 
   _getPosition(position) {
-    //! In callback functions 'this' is undefined!
-    // console.log(this);
-
     //? First callback function: when success (could get the location)
 
     const { latitude } = position.coords;
@@ -113,17 +110,18 @@ class App {
   _newWorkout(e) {
     //? ...inputs means get all inputs which returns an array
     const validInputs = (...inputs) =>
-      // every checks if all the members match the given condition
       inputs.every(inp => Number.isFinite(inp));
+    const allPositive = (...inputs) => inputs.every(inp => inp > 0);
 
-    const allPositive = (...inputs) => inputs.every(inp => inp.value > 0);
+    console.log(validInputs());
+    console.log(allPositive());
 
     e.preventDefault();
 
     // Get data from form
     const type = inputType.value;
-    const distance = inputDistance.value;
-    const duration = inputDuration.value;
+    const distance = +inputDistance.value;
+    const duration = +inputDuration.value;
 
     // if workout running, create running object
     if (type === 'running') {
@@ -132,8 +130,8 @@ class App {
 
       // Check if data is valid
       if (
-        validInputs(distance, cadence, duration) ||
-        allPositive(distance, cadence, duration)
+        !validInputs(distance, cadence, duration) ||
+        !allPositive(distance, cadence, duration)
       )
         return alert('Inputs have to be positive numbers'); //? If distance is not a number
     }
@@ -144,11 +142,10 @@ class App {
 
       // Check if data is valid
       if (
-        validInputs(distance, elevation, duration) ||
-        allPositive(distance, duration)
-      ) {
+        !validInputs(distance, elevation, duration) ||
+        !allPositive(distance, duration)
+      )
         return alert('Inputs have to be positive numbers'); //? If distance is not a number
-      }
     }
     // Add new object to workour array
 

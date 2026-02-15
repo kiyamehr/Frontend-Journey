@@ -79,6 +79,9 @@ class App {
     //? so when the page loads the loadmap method will get launched too so we dont have to call it outside of the class
     this._loadMap();
 
+    // Get data from local storage
+    this._getLocalStorage();
+
     // in event listener the 'this' goes to form
     form.addEventListener('submit', this._newWorkout.bind(this));
 
@@ -123,6 +126,8 @@ class App {
 
     //? Leaflet event Listener on map
     this.#map.on('click', this._showForm.bind(this));
+
+    this.#workout.forEach(work => this._renderWorkoutMarker(work));
   }
 
   _newWorkout(e) {
@@ -176,6 +181,9 @@ class App {
 
     // Hide form + Clear input fields
     this._hideForm();
+
+    // Set local storage for all workouts
+    this._setLocalStorage();
   }
 
   _renderWorkoutMarker(workout) {
@@ -284,7 +292,29 @@ class App {
       },
     });
 
-    workout.click();
+    // cause when we stringify the object and then turn it back into a object the prototype chain will be gone \n
+    // this is because it no longer inherits anything form the parent class
+    // workout.click();
+  }
+
+  _setLocalStorage() {
+    // a built in API which let's us store data in the browser
+    localStorage.setItem('workouts', JSON.stringify(this.#workout)); // (key, value)
+  }
+
+  _getLocalStorage() {
+    const data = JSON.parse(localStorage.getItem('workouts'));
+
+    if (!data) return;
+
+    this.#workout = data;
+
+    this.#workout.forEach(work => this._renderWorkout(work));
+  }
+
+  reset() {
+    localStorage.removeItem('workouts');
+    location.reload();
   }
 }
 

@@ -13,6 +13,7 @@ const inputElevation = document.querySelector('.form__input--elevation');
 let map, mapEvent;
 
 class Workout {
+  clicks = 0;
   date = new Date();
   id = (Date.now() + '').slice(-10);
   constructor(coords, duration, distance) {
@@ -26,6 +27,10 @@ class Workout {
     const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 
     this.description = `${this.type[0].toUpperCase()}${this.type.slice(1)} on ${months[this.date.getMonth()]} ${this.date.getDate()}`;
+  }
+
+  click() {
+    this.clicks++;
   }
 }
 
@@ -65,6 +70,7 @@ class Cycling extends Workout {
 // Application Architecture
 class App {
   #map;
+  #mapZoom = 13;
   #mapEvent;
   #workout = [];
 
@@ -77,6 +83,7 @@ class App {
     form.addEventListener('submit', this._newWorkout.bind(this));
 
     inputType.addEventListener('change', this._toggleElevationField);
+    containerWorkouts.addEventListener('click', this._moveToPopup.bind(this));
   }
 
   _toggleElevationField() {
@@ -107,7 +114,7 @@ class App {
     //* Leaflet Map
 
     const coords = [latitude, longitude];
-    this.#map = L.map('map').setView(coords, 15);
+    this.#map = L.map('map').setView(coords, this.#mapZoom);
 
     L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
       attribution:
@@ -259,6 +266,25 @@ class App {
     form.style.display = 'none'; // setting display none for not the hovering transition
     form.classList.add('hidden'); // hide the form
     setTimeout(() => (form.style.display = 'grid'), 1000); // displaying it again after the transition ends
+  }
+
+  _moveToPopup(e) {
+    const workoutEl = e.target.closest('.workout');
+
+    if (!workoutEl) return;
+
+    const workout = this.#workout.find(
+      work => work.id === workoutEl.dataset.id,
+    );
+
+    this.#map.setView(workout.coords, this.#mapZoom, {
+      animate: true,
+      pan: {
+        duration: 1,
+      },
+    });
+
+    workout.click();
   }
 }
 

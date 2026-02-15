@@ -42,7 +42,7 @@ class Running extends Workout {
 class Cycling extends Workout {
   type = 'cycling';
   constructor(coords, duration, distance) {
-    super(coords, distance, duration);
+    super(coords, duration, distance);
     this.calcSpeed();
   }
 
@@ -68,13 +68,13 @@ class App {
     // in event listener the 'this' goes to form
     form.addEventListener('submit', this._newWorkout.bind(this));
 
-    inputType.addEventListener('change', this._toggleElevationField.bind(this));
+    inputType.addEventListener('change', this._toggleElevationField);
   }
 
   _toggleElevationField() {
     // This way allways one is hidden and one is showing
     inputElevation.closest('.form__row').classList.toggle('form__row--hidden');
-    inputDistance.closest('.form__row').classList.toggle('form__row--hidden');
+    inputCadence.closest('.form__row').classList.toggle('form__row--hidden');
   }
 
   _loadMap() {
